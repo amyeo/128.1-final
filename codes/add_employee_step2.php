@@ -1,12 +1,10 @@
-<?php include("append.php"); ?>
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>Add Employee</title>
+    <title>New Employee</title>
 	<link rel="icon" href="images/cropped-UPseal-newcolors-192x192.png" sizes="192x192">
 
 	<script src="js/jquery-3.3.1.min_2.js"></script>
@@ -18,6 +16,11 @@
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
+	<style>
+	table, td {
+  	border: 1px solid black;
+	}
+	</style>
 
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -43,68 +46,6 @@
         }
       }
     </style>
-
-	<script>
-		$(document).ready(function(){
-			$("#add_dependency").click(function(e) {
-				var counter = 3;
-				var dependencyName = "employee_dependency_" + counter;
-				var relationName = "dependency_relationship_" + counter;
-				counter++;
-				e.preventDefault();
-				$("#dependency_form").append('<div class = "col-7"><div class="form-group input-group"><div class="input-group-prepend"><span class="input-group-text">Name</span></div><input name=' + dependencyName + ' class="form-control" placeholder="" type="text"></div></div><div class = "col-4"><div class="form-group input-group"><div class="input-group-prepend"><span class="input-group-text">Relationship</span></div><input name=' + relationName + ' class="form-control" placeholder="" type="text"></div></div>');
-			});
-			$("#add_history").click(function(e) {
-				var counter1 = 2;
-				var jobName = "job_name_" + counter1;
-				var jobDesc = "job_desc_" + counter1;
-				counter1++;
-				e.preventDefault();
-				$("#history_form").append('	<div class = "row"><div class = "col-11"><div class="form-group input-group"><div class="input-group-prepend"><span class="input-group-text">Job Name</span></div><input name=' + jobName + 'class="form-control" placeholder="" type="text"></div></div><div class = "col"></div></div><div class = "row"><div class="form-group input-group col"><textarea style = "width: 877px" rows = 4 id =' + jobDesc + ' name =' + jobDesc + ' class="form-control" placeholder="briefly describe.." form = "step2"></textarea></div></div>');
-			});
-			$(".deleteThis").click(function(){
-				$(this.parentNode).remove();
-			})
-
-			  $("#toStep3").click(validate);
-				function validate(){
-
-				//if($("[name=employee_dependency_1]").val()=="" || $("[name=dependency_relationship_1]").val()=="" || $("[name=job_name_1]").val()=="" || $("[name=job_desc_1]").val()==""){
-//
-				//  alert("No entries. Press SKIP!");
-				}
-			  else {
-				if (((document.location).toString()).includes("step2")){
-				$("#addform").submit();
-				//////Writing other fields for other tables on a CSV
-
-
-
-
-				//////
-				//to do after form submits
-				$("#addform").reset();
-			  }
-			  else {
-				$("#editform").submit();
-				//to do after form submits
-				$("#editform").reset();
-			  }
-			  }
-			  }
-
-			  function isDigit(text){
-				if (text.match("[0-9]+")) {
-				  return true;
-			  }
-			  else {
-				return false;
-			  }
-			}
-
-			});
-
-	</script>
 
     <!-- Custom styles for this template -->
 	<link rel="stylesheet" href="signUpStyles.css">
@@ -133,126 +74,223 @@
 
 
 	<div class="card bg1-light">
-		<article class="card-body mx-auto" style="max-width: 1100px;">
+		<article class="card-body mx-auto" style="max-width: 1000px;">
       <div class="row"><div class = "col-sm mx-auto"style="max-width: 500px;">
 		  <img src="images/progress2.png" style="height:120px;margin:0px;">
 		</div></div>
-			<form id="addform" method = "post" name = "step2" action = "export.php">
-				<!--EDITING THIS SHIT-->
-	
-		
-				<input name="first_name" type="text" hidden value = "<?php echo $first_name?>">
-				<input name="last_name" type="text" hidden value = "<?php echo $last_name?>">
-				<input name="middle_initial" type="text" hidden value = "<?php echo $middle_initial?>">
-				<input name="sex" type="text" hidden value = "<?php echo $sex?>">
-				<input name="full_address" type="text" hidden value = "<?php echo $full_address?>">
-				<input name="place_of_birth" type="text" hidden value = "<?php echo $place_of_birth?>">
-				<input name="birthday" type="date" hidden value = "<?php echo $birthday?>">
-				<input name="phone_number" type="text" hidden value = "<?php echo $phone_number?>">
-				<input name="email" type="text" hidden value = "<?php echo $email?>">
-				<input name="linkedin_profile" type="text" hidden value = "<?php echo $linkedin_profile?>">
-				<input name="educational_attainment" type="text" hidden value = "<?php echo $educational_attainment?>">
-				<input name="civil_status" type="text" hidden value = "<?php echo $civil_status?>">
-				<input name="nationality" type="text" hidden  value = "<?php echo $nationality?>">
-				<input name="SSN" type="text" hidden value = "<?php echo $SSN?>">
-				
-				<!--I SET MAX No. of SKILLS TO 5-->
-				<input name="employee_skill_1" type="text" hidden value = "<?php echo $employee_skill_1?>">
-				<input name="employee_skill_2" type="text" hidden value = "<?php if($skill_count>1) echo $employee_skill_2; else ''?>">
-				<input name="employee_skill_3" type="text" hidden value = "<?php if($skill_count>2) echo $employee_skill_3; else ''?>">
-				<input name="employee_skill_4" type="text" hidden value = "<?php if($skill_count>3) echo $employee_skill_4; else ''?>">
-				<input name="employee_skill_5" type="text" hidden value = "<?php if($skill_count>4) echo $employee_skill_5; else ''?>">
-				<input type = "text" name = "skill_count" value = "<?php echo $skill_count?>" hidden>
-				
-				<input name="applying_for" type="text" hidden value = "<?php echo $applying_for?>">
-				<input name="birth_cert_id" type="text" hidden value = "<?php echo $birth_cert_id?>">
-				<input name="health_benefits" type="text" hidden value = "<?php echo $health_benefits?>">
-				
-				<!---->
-		
-		
+
+		<script>
+		//do not delete
+		function AddSkill(){
+            //do validation here first
+            var nameField = document.getElementById("skill_name").value;
+            //check email first,then all the general fields that may be blank
+            var table=document.getElementById("SkillsTable");
+						var row=table.insertRow(-1);
+						var cell1=row.insertCell(0);
+						var cell2=row.insertCell(1);
+						cell1.innerHTML = nameField;
+						cell2.innerHTML = '<button onclick="DeleteRow(this)">Delete</button>';
+        }
+			function DeleteRow(btn){
+				var row = btn.parentNode.parentNode;
+				row.parentNode.removeChild(row);
+			}
+
+			function AddJobHist(){
+            //do validation here first
+            var nameField = document.getElementById("job_name").value;
+						var descField = document.getElementById("job_description").value;
+            //check email first,then all the general fields that may be blank
+            var table=document.getElementById("JobHistoryTable");
+						var row=table.insertRow(-1);
+						var cell1=row.insertCell(0);
+						var cell2=row.insertCell(1);
+						var cell3=row.insertCell(2);
+						cell1.innerHTML = nameField;
+						cell2.innerHTML = descField;
+						cell3.innerHTML = '<button onclick="DeleteRow(this)">Delete</button>';
+        }
+
+				function AddDep(){
+            //do validation here first
+            var nameField = document.getElementById("dependent_name").value;
+						var descField = document.getElementById("dependent_relationship").value;
+            //check email first,then all the general fields that may be blank
+            var table=document.getElementById("DependentsTable");
+						var row=table.insertRow(-1);
+						var cell1=row.insertCell(0);
+						var cell2=row.insertCell(1);
+						var cell3=row.insertCell(2);
+						cell1.innerHTML = nameField;
+						cell2.innerHTML = descField;
+						cell3.innerHTML = '<button onclick="DeleteRow(this)">Delete</button>';
+        }
+
+				function SubmitAsString(){
+					
+            var outString_dependents = "";
+            var table = document.getElementById("DependentsTable");
+            for (var i = 1, row; row = table.rows[i]; i++) {
+                //iterate through rows
+                //rows would be accessed using the "row" variable assigned in the for loop
+                for (var j = 0, col; col = row.cells[j]; j++) {
+                    //iterate through columns
+                    //columns would be accessed using the "col" variable assigned in the for loop
+                    outString_dependents = outString_dependents + col.innerText;
+                    if(j<2){
+											outString_dependents = outString_dependents + ",";
+                    }
+                }  
+                outString_dependents = outString_dependents + ";";
+								console.log()
+            }
+            document.getElementById("dependents_table_csv").value = outString_dependents;
+						//console.log(outString_dependents);
+
+						var outString_skills = "";
+            var table = document.getElementById("SkillsTable");
+            for (var i = 1, row; row = table.rows[i]; i++) {
+                //iterate through rows
+                //rows would be accessed using the "row" variable assigned in the for loop
+                for (var j = 0, col; col = row.cells[j]; j++) {
+                    //iterate through columns
+                    //columns would be accessed using the "col" variable assigned in the for loop
+                    outString_skills = outString_skills + col.innerText;
+                    if(j<1){
+											outString_skills = outString_skills+ ",";
+                    }
+                }  
+                outString_skills = outString_skills + ";";
+            }
+            document.getElementById("skills_table_csv").value = outString_skills
+
+						var outString_jhist = "";
+            var table = document.getElementById("JobHistoryTable");
+            for (var i = 1, row; row = table.rows[i]; i++) {
+                //iterate through rows
+                //rows would be accessed using the "row" variable assigned in the for loop
+                for (var j = 0, col; col = row.cells[j]; j++) {
+                    //iterate through columns
+                    //columns would be accessed using the "col" variable assigned in the for loop
+                    outString_jhist = outString_jhist + col.innerText;
+                    if(j<2){
+											outString_jhist = outString_jhist + ",";
+                    }
+                }  
+                outString_jhist = outString_jhist + ";";
+            }
+            document.getElementById("job_history_table_csv").value = outString_jhist;
+
+
+            return true;
+        }
+		</script>
+
+			<!-- Table bullshit starts here -->
+			<h2>Dependents Editor</h2>
+				<table id="DependentsTable">
+				<tr>
+					<td><b>Dependent Name</b></td>
+					<td><b>Relationship</b></td>
+					<td><b>Action</b></td>
+				</tr>
+			</table>
+			<h3>Add Dependents</h3>
+			Dependent's Name: <input type="text" id="dependent_name"> <br>
+			Dependent's Relationship: <input type="text" id="dependent_relationship"> <br>
+			<button onclick="AddDep()">Add Dependent</button> <br>
+			<hr/>
+
+
+
+			<h2>Skills Editor</h2>
+				<table id="SkillsTable">
+				<tr>
+					<td><b>Skill Name</b></td>
+					<td><b>Action</b></td>
+				</tr>
+				<?php
+				//step 1: load csv into string here for applicant
+				$skills_csv = $_POST["skills_csv"];
+				//first of all, break the data into rows
+      $row_arr = explode(";",$skills_csv);
+        foreach($row_arr as $row){
+						$cell_arr = explode(",",$row);
+						if($cell_arr[0] != ""){
+							print "<tr>";
+							print "<td>" . $cell_arr[0] . "</td>";
+							print "<td>" . '<button onclick="DeleteRow(this)">Delete</button>' . "</td>";
+							print "</tr>";
+						}
+        }
+				?>
+			</table>
+			<h4>Add Skill</h4>
+			Skill Name: <input type="text" id="skill_name"> <br>
+			<button onclick="AddSkill()">Add Skill</button> <br>
+			<hr/>
+
+
+			<h2>Job History Editor</h2>
+				<table id="JobHistoryTable">
+				<tr>
+					<td><b>Job Title</b></td>
+					<td><b>Job Description</b></td>
+					<td><b>Action</b></td>
+				</tr>
+				<?php
+				//step 1: load csv into string here for applicant
+				$job_history_csv = $_POST["job_history_csv"];
+				//first of all, break the data into rows
+        $row_arr = explode(";",$job_history_csv);
+        foreach($row_arr as $row){
+						$cell_arr = explode(",",$row);
+						if($cell_arr[0] != "" && $cell_arr[1] != ""){
+							print "<tr>";
+							print "<td>" . $cell_arr[0] . "</td>";
+							print "<td>" . $cell_arr[1] . "</td>";
+							print "<td>" . '<button onclick="DeleteRow(this)">Delete</button>' . "</td>";
+							print "</tr>";
+						}
+        }
+				?>
+			</table>
+			<h4>Add Job History Entry</h4>
+			Job Title: <input type="text" id="job_name"> <br>
+			Job Description: <input type="text" id="job_description"> <br>
+			<button onclick="AddJobHist()">Add Job History Entry</button> <br>
+			<hr/>
+
+
+
+			<form id="addform" method = "post" name = "step2" action = "add_employee_final.php" onsubmit="return SubmitAsString()">
+			<input name="first_name" type="hidden" value="<?php echo $_POST["first_name"]; ?>">
+			<input name="last_name" type="hidden" value="<?php echo $_POST["last_name"]; ?>">
+			<input name="middle_initial" type="hidden" value="<?php echo $_POST["middle_initial"]; ?>">
+			<input name="sex" type="hidden" value="<?php echo $_POST["sex"]; ?>">
+			<input name="full_address" type="hidden" value="<?php echo $_POST["full_address"]; ?>">
+			<input name="place_of_birth" type="hidden" value="<?php echo $_POST["place_of_birth"]; ?>">
+			<input name="birthday" type="hidden" value="<?php echo $_POST["birthday"]; ?>">
+			<input name="phone_number" type="hidden" value="<?php echo $_POST["phone_number"]; ?>">
+			<input name="email" type="hidden" value="<?php echo $_POST["email"]; ?>">
+			<input name="linkedin_profile" type="hidden" value="<?php echo $_POST["linkedin_profile"]; ?>">
+			<input name="educational_attainment" type="hidden" value="<?php echo $_POST["educational_attainment"]; ?>">
+			<input name="civil_status" type="hidden" value="<?php echo $_POST["civil_status"]; ?>">
+			<input name="nationality" type="hidden" value="<?php echo $_POST["nationality"]; ?>">
+			<input name="SSN" type="hidden" value="<?php echo $_POST["SSN"]; ?>">
+			<input name="job_position" type="hidden" value="<?php echo $_POST["job_position"]; ?>">
+			<input name="birth_cert_id" type="hidden" value="<?php echo $_POST["birth_cert_id"]; ?>">
+			<input name="health_package" type="hidden" value="<?php echo $_POST["health_package"]; ?>">
+
+			<input name="dependents_table_csv" id="dependents_table_csv" type="hidden" value="">
+			<input name="skills_table_csv" id="skills_table_csv" type="hidden" value="">
+			<input name="job_history_table_csv" id="job_history_table_csv" type="hidden" value="">
+
 				<br>
-
-
-				<!--Dependencies-->
-				<h2 align = "center" style = "width: 1000px">Dependents:</h2>
-				<div class = "row" id = "dependency_form">
-					<div class = "col-7">
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Name</span>
-							</div>
-							<input name="employee_dependency_1" class="form-control" placeholder="optional" type="text">
-						</div>
-					</div>
-					<div class = "col-4">
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Relationship</span>
-							</div>
-							<input name="dependency_relationship_1" class="form-control" placeholder="optional" type="text">
-						</div>
-					</div>
-					<div class = "col">
-						<button class = "btn btn-secondary" id="add_dependency">Add</button>
-					</div>
-					<div class = "col-7">
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Name</span>
-							</div>
-							<input name="employee_dependency_2" class="form-control" placeholder="optional" type="text">
-						</div>
-					</div>
-					<div class = "col-4">
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text">Relationship</span>
-							</div>
-							<input name="dependency_relationship_2" class="form-control" placeholder="optional" type="text">
-						</div>
-					</div>
-
-				</div>
-				<br>
-				<!--Job History-->
-				<h2 align = "center" style = "width: 1000px">Job History:</h2>
-
-				<div id = "history_form">
-					<div class = "row">
-						<div class = "col-11">
-							<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Job Name</span>
-								</div>
-								<input name="job_name_1" class="form-control" placeholder="" type="text">
-							</div>
-						</div>
-
-						<div class = "col">
-							<button class = "btn-secondary btn"id="add_history">Add</button>
-						</div>
-					</div>	
-					<div class = "row">
-						<div class="form-group input-group col">
-							<textarea style = "width: 970px" rows = 4 id = "job_desc_1"  name="job_desc_1" placeholder="briefly describe.." form = "addform"></textarea>
-						</div>
-					</div>
-				</div>
-
-
-
-				<br>
-
-				<div class = "row">
 					<div class = "col">
 						<div class="form-group mx-auto" style = "max-width: 500px">
-							<input id="skip" type="button" class="btn btn-danger btn-block" value= "Skip this step" >
-						</div>
-					</div>
-					<div class = "col">
-						<div class="form-group mx-auto" style = "max-width: 500px">
-							<input id="toStep3" type="button" class="btn btn-danger btn-block" value= "Submit" >
+							<input id="toStep3" type="submit" class="btn btn-danger btn-block" value= "Finalize and add as employee" >
 						</div>
 					</div>
 				</div>
@@ -260,28 +298,6 @@
 			</form>
 		</article>
 	</div>
-	
-	<footer class="footer text-center " style = "margin-left: -40px;" >
-		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
-		  <div class="row">
-			<div class="col-md-4 mb-2 mb-lg-0">
-			  <h4 class="text-uppercase mb-4">Location</h4>
-			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
-			</div>
-			
-			
-			<p>
-			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
-			</p>
-			
-			
-			<div class="col-md-4">
-			  <h4 class="text-uppercase mb-4">About Us</h4>
-			  <p class="lead mb-0">CS 127 Group</p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
 
 
 
