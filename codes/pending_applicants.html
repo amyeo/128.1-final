@@ -36,12 +36,7 @@
     }
   </style>
   <script>
-    $(document).ready(function(){
-      $('.row_hover').hover(function (){
-        $('.profile_hover').slideDown(400, function(){});
-        $('.hover').hide();
-      });
-    });
+
   </script>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -70,52 +65,25 @@
           Last entry 2 days ago
         </div>
       </div>
-      <article class="card-body mx-auto" style="max-width: 800px;">
-        <table class="table" style="width:1000px; padding-left:0">
-          <tbody>
-            <tr class="row_hover">
-              <th scope="row">1</th>
-              <td class="hover">Mark Otto</td>
-              <td class="hover">May 1, 2019</td>
-              <td class="profile_hover" style="display: none">
-                <div class="card mb-3" style="width:800px;">
-                  <div class="row no-gutters">
-                    <div class="col-md-4">
-                      <img src="arduinologo.png" class="card-img" alt="..." style="max-height: 200px; width: auto; margin-left: 20px; margin-right: 0">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">Mark Otto</h5>
-                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Target Position: </p>
-                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Educational Attainment: </p>
-                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Phone number: </p>
-                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Linked-In Profile: </p>
-                        <a class="btn btn-danger" href="approve_applicant.php?id=1">Approve</a>
-                        <a class="btn btn-outline-danger" href="reject_applicant.php?id=1">Reject</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob Thornton</td>
-              <td>April 3, 2019</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry King</td>
-              <td>March 8. 2019</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </article>
+      <div class="card" style="display: flex; justify-content: center; flex-direction: row">
+        <!ARVIN: editted portion of the code>
+          <table id='pending_table' name='pending_container' class='table' style="width: 80%; margin: 3%;">
+            <thead>
+              <tr>
+                <th style="width: 5%"> ID </th>
+                <th style="width: 50%"> Name </th>
+                <th> Target Position </th>
+              </tr>
+            </thead>
+            <tbody id='table_body' name='table_body'>
+            </tbody>
+          </table>
+        <!ARVIN: end of table editting>
+      </div>
     </div>
 
   </body>
-  
+
   <footer class="footer text-center " style = "margin-left: -40px;" >
 		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
 		  <div class="row">
@@ -123,13 +91,13 @@
 			  <h4 class="text-uppercase mb-4">Location</h4>
 			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
 			</div>
-			
-			
+
+
 			<p>
 			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
 			</p>
-			
-			
+
+
 			<div class="col-md-4">
 			  <h4 class="text-uppercase mb-4">About Us</h4>
 			  <p class="lead mb-0">CS 127 Group</p>
