@@ -46,19 +46,19 @@
 <div class="container"><div class="row">
 <div class="card col-sm" style="width: 18rem; margin-right: 20px;"><br><br>
 <p>Enter User ID (provided during application) and password:</p>
-<form method="post" action="">
+<form method="post" action="check_application_status.php">
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1">User ID</span>
+		<span class="input-group-text" id="basic-addon1">User ID</span>
   </div>
-  <input type="text" placeholder="User ID" aria-label="User ID" aria-describedby="basic-addon2">
+  <input type="text" name="user_id" placeholder="User ID" aria-label="User ID" aria-describedby="basic-addon2">
 </div>
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">Password</span>
   </div>
-  <input type="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+  <input type="password" name="user_password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
 </div>
 
 <button type="submit" class="btn btn-secondary">Check Status of Application </button>
