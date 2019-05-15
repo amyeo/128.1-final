@@ -34,6 +34,7 @@ $job_position = "";
 $birth_cert_id = "";
 $employment_date = "";
 $health_package = "";
+$applicant_id = "";
 
 $skills_csv = "";
 $job_history_csv = "";
@@ -49,6 +50,7 @@ if($id != ""){
             $fill_data = true;
             //start filling data
 						$row = mysqli_fetch_array($id_match_result);
+						$applicant_id = $row['id'];
 						$skills_csv = $row['skills_csv'];
 						$job_history_csv = $row['job_history_csv'];
             $first_name = $row['first_name'];
@@ -365,6 +367,8 @@ if($id != ""){
 				<!--employee added fields-->
 				<input name="skills_csv" type="hidden" value="<?php echo $skills_csv; ?>">
 				<input name="job_history_csv" type="hidden" value="<?php echo $job_history_csv; ?>">
+
+				<input name="applicant_id" type="hidden" value="<?php echo $applicant_id; ?>">
 
 			  <font color="red">* </font><font color="grey">Required fields - must be filled!</font><br><br>
 				<div class="form-group mx-auto" style = "max-width: 400px">
