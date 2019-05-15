@@ -282,6 +282,7 @@
 			<input name="job_position" type="hidden" value="<?php echo $_POST["job_position"]; ?>">
 			<input name="birth_cert_id" type="hidden" value="<?php echo $_POST["birth_cert_id"]; ?>">
 			<input name="health_package" type="hidden" value="<?php echo $_POST["health_package"]; ?>">
+			<input name="applicant_id" type="hidden" value="<?php echo $_POST["applicant_id"]; ?>">
 
 			<input name="dependents_table_csv" id="dependents_table_csv" type="hidden" value="">
 			<input name="skills_table_csv" id="skills_table_csv" type="hidden" value="">

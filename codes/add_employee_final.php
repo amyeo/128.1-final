@@ -10,7 +10,7 @@ if(mysqli_connect_errno()){
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit(); //quit if failed
 }
-var_dump($_POST);
+//var_dump($_POST);
 
 //process POST request here
 
@@ -70,7 +70,7 @@ $SSN = mysqli_real_escape_string($link,$_POST['SSN']);
 $target_position = mysqli_real_escape_string($link,$_POST['job_position']);
 $birth_cert_id = mysqli_real_escape_string($link,$_POST['birth_cert_id']);
 $health_package = mysqli_real_escape_string($link,$_POST['health_package']);
-
+$applicant_id = mysqli_real_escape_string($link,$_POST['applicant_id']);
 
 //print "a: " . $job_history_csv;
 //print "b: " . $employee_skills_csv;
@@ -145,6 +145,11 @@ foreach($row_arr as $row){
         mysqli_query($link, $querystr);
     }
 }
+
+//finally, update the applicant record and make it approved
+$querystr = "UPDATE applicants SET approved=3 WHERE id=" . $applicant_id . "";
+//echo $querystr . "\n";
+mysqli_query($link, $querystr);
 ?>
 
 <!doctype html>
