@@ -10,14 +10,10 @@ if(mysqli_connect_errno()){
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit(); //quit if failed
 }
-//var_dump($_POST);
+var_dump($_POST);
 
 //process POST request here
-//first, make sure passwords match. if not, quit
-if($_POST["results_password1"] != $_POST["results_password2"]){
-	print "ERROR! Passwords do not match!";
-	exit();
-}
+
 //now, gather and filter fields
 /*
 array(31) {
@@ -71,49 +67,27 @@ $educational_attainment = mysqli_real_escape_string($link,$_POST['educational_at
 $civil_status = mysqli_real_escape_string($link,$_POST['civil_status']);
 $nationality = mysqli_real_escape_string($link,$_POST['nationality']);
 $SSN = mysqli_real_escape_string($link,$_POST['SSN']);
-$target_position = mysqli_real_escape_string($link,$_POST['job_position_targ']);
+$target_position = mysqli_real_escape_string($link,$_POST['job_position']);
 $birth_cert_id = mysqli_real_escape_string($link,$_POST['birth_cert_id']);
+$health_package = mysqli_real_escape_string($link,$_POST['health_package']);
 
-//get employee CSV now
-$job_history_csv = "";
-//Auto add all job_name_1
-$job_name_num = 1;
-$job_name_name = "job_name_";
-while(isset($_POST[$job_name_name . $job_name_num])){
-	$job_desc = "";
-	if(isset($_POST["job_desc_" . $job_name_num])){
-		$job_desc = $_POST["job_desc_" . $job_name_num];
-	}
-	$job_history_csv = $job_history_csv . $_POST[$job_name_name . $job_name_num] . ", " . $job_desc . ";";
-	$job_name_num = $job_name_num + 1;
-}
 
-//get employee skill csv
-$employee_skills_csv = "";
-//Auto add all job_name_1
-$emps_num = 1;
-$emps_name = "employee_skill_";
-while(isset($_POST[$emps_name . $emps_num]) && $_POST[$emps_name . $emps_num] != ""){
-	$employee_skills_csv = $employee_skills_csv . $_POST[$emps_name . $emps_num] . ";";
-	$emps_num = $emps_num + 1;
-}
 //print "a: " . $job_history_csv;
 //print "b: " . $employee_skills_csv;
 //add to db
 $db = new PDO ('mysql:host = localhost; dbname=128.1v2; charset=utf8', 'root', '');
-$query = $db->prepare ("INSERT INTO applicants (first_name, last_name
+$query = $db->prepare ("INSERT INTO employee (first_name, last_name
 ,middle_initial, sex, current_address,
 place_of_birth, birthdate, phone_number,
 email,linkedin_profile, educational_attainment,
-civil_status, nationality, SSN,
-job_history_csv, skills_csv, target_position, user_password, birth_cert_id) VALUES ('" . $first_name . "', '" . 
+civil_status, nationality, SSN, job_position, birth_certificate_id, health_package) VALUES ('" . $first_name . "', '" . 
 $last_name . "', '" . $middle_initial . "', '" . $sex . "', '" .
 $full_address . "', '" . $place_of_birth . "', '" . $birthday . "', '" . 
 $phone_number . "', '" . $email . "', '" . $linkedin_profile . "', '" . 
 $educational_attainment . "', '" . $civil_status . "', '" . $nationality . "', '" . 
-$SSN . "', '" . $job_history_csv . "', '" . $employee_skills_csv . "', '" . $target_position . "', '" . $_POST["results_password1"] . "', '" . $birth_cert_id  . "')");
+$SSN . "', '" . $target_position . "', '" . $birth_cert_id . "', '" . $health_package  . "')");
 
-$query->debugDumpParams();
+//$query->debugDumpParams();
 $query -> execute();
 
 //$error= $query->errorInfo();
@@ -121,6 +95,56 @@ $query -> execute();
 
 
 //$ = mysqli_real_escape_string($link,$_POST['']);
+
+//now add the CSVs
+$job_history_csv = mysqli_real_escape_string($link,$_POST['job_history_table_csv']);
+$skills_csv = mysqli_real_escape_string($link,$_POST['skills_table_csv']);
+$dependents_csv = mysqli_real_escape_string($link,$_POST['dependents_table_csv']);
+
+//calculate and get employee id first to link to the db FKs
+$employee_id = $db->lastInsertId();
+
+//print "Emp :" . $employee_id;
+
+//dump job history
+//first of all, break the data into rows
+$row_arr = explode(";",$job_history_csv);
+//now loop trough the rows and add to db
+foreach($row_arr as $row){
+    $cell_arr = explode(",",$row);
+    //add user
+    if(($cell_arr[0] != "") && ($cell_arr[1] != "")){
+        $querystr = "INSERT INTO employee_job_history(employee_id, job_name, job_desc) VALUES('" . $employee_id . "','" . $cell_arr[0] . "','"  . $cell_arr[1] . "')" ;
+        //echo $querystr . "\n";
+        mysqli_query($link, $querystr);
+    }
+}
+
+//dump skills
+$row_arr = explode(";",$skills_csv);
+//now loop trough the rows and add to db
+foreach($row_arr as $row){
+    $cell_arr = explode(",",$row);
+    //add user
+    if(($cell_arr[0] != "")){
+        $querystr = "INSERT INTO employee_skills(employee_id, skill) VALUES('" . $employee_id . "','"  . $cell_arr[0] . "')" ;
+        //echo $querystr . "\n";
+        mysqli_query($link, $querystr);
+    }
+}
+
+//dependents csv
+$row_arr = explode(";",$dependents_csv);
+//now loop trough the rows and add to db
+foreach($row_arr as $row){
+    $cell_arr = explode(",",$row);
+    //add user
+    if(($cell_arr[0] != "") && ($cell_arr[1] != "")){
+        $querystr = "INSERT INTO employee_deps(employee_id, dep_name, dep_relation) VALUES('" . $employee_id . "','" . $cell_arr[0] . "','"  . $cell_arr[1] . "')" ;
+        //echo $querystr . "\n";
+        mysqli_query($link, $querystr);
+    }
+}
 ?>
 
 <!doctype html>
@@ -129,7 +153,7 @@ $query -> execute();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>New Applicant</title>
+    <title>Add Employee</title>
 	<link rel="icon" href="images/cropped-UPseal-newcolors-192x192.png" sizes="192x192">
 
 	<script src="js/jquery-3.3.1.min_2.js"></script>
@@ -199,7 +223,7 @@ $query -> execute();
 			  <li>
 			  </li>
 			  <li class="nav-item active">
-				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Application Form (Finished)<span class="sr-only">(current)</span></a>
+				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Add Employee Form (Finished)<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
 			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
@@ -221,14 +245,8 @@ $query -> execute();
 
 
 				<!--Dependencies-->
-				<h4 align = "center" style = "width: 1000px">Thank you for submitting the application form. Your details will be validated soon. You check your application status through the link below.</h2>
+				<h4 align = "center" style = "width: 1000px">Employee added</h2>
 				<br>
-				
-				<h4 align = "center" style = "width: 1000px">ID: 0069</h2>
-				<br>
-				
-				<h4 align = "center" style = "width: 1000px">Password: <?php echo $_POST["results_password1"]; ?></h2>
-				<br><br><br>
 				
 			</form>
 		</article>

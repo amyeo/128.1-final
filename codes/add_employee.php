@@ -35,7 +35,8 @@ $birth_cert_id = "";
 $employment_date = "";
 $health_package = "";
 
-
+$skills_csv = "";
+$job_history_csv = "";
 
 // if id exists, try searching it. if it does not OR none provided, return error
 if($id != ""){
@@ -47,7 +48,9 @@ if($id != ""){
             //succes, record found!
             $fill_data = true;
             //start filling data
-            $row = mysqli_fetch_array($id_match_result);
+						$row = mysqli_fetch_array($id_match_result);
+						$skills_csv = $row['skills_csv'];
+						$job_history_csv = $row['job_history_csv'];
             $first_name = $row['first_name'];
             $last_name = $row['last_name'];
 			$job_position = $row['target_position'];
@@ -74,7 +77,8 @@ if($id != ""){
         mysqli_free_result($id_match_result);
     }
 }else{
-    echo "Error: Record ID MUST be provided" . "\n";
+		echo "Error: Record ID MUST be provided" . "\n";
+		exit();
 }
 
 ?>
@@ -242,7 +246,7 @@ if($id != ""){
 					<div class="input-group-prepend">
 						<span class="input-group-text">Birthday</span>
 					</div>
-					<input name="birthday" class="form-control" placeholder="Birthday" type="date" value = "<?php echo $birthday?>"><font color="red">*</font>
+					<input name="birthday" class="form-control" placeholder="Birthday" type="date" value="<?php echo $birthday; ?>" ><font color="red">*</font>
 				</div> <!-- form-group end.// -->
 
 				<!----------------------->
@@ -275,7 +279,7 @@ if($id != ""){
 				
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text">Target Position</span>
+						<span class="input-group-text">Assigned Job Position</span>
 					</div>
 					<input name="job_position" class="form-control" placeholder="optional" type="text" value = "<?php 
 					
@@ -290,6 +294,20 @@ if($id != ""){
 					echo $pos?>">
 				</div>
 
+				<div class="form-group input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Health Package</span>
+							<select name="health_package">
+							<?php
+							$count=0;
+							$sel_query="Select * from health_packages ORDER BY id asc;";
+							$result = mysqli_query($link,$sel_query);
+							while($row = mysqli_fetch_assoc($result)) { ?>
+							<option id="<?php print $row["id"]; ?>" value="<?php print $row["id"]; ?>"><?php print $row["package_name"]; ?></option>
+							<?php $count++; } ?>    
+							</select>
+					</div>
+				</div>
 
 				<div class = "row">
 					<div class = "col">
@@ -345,6 +363,8 @@ if($id != ""){
 				</div>
 
 				<!--employee added fields-->
+				<input name="skills_csv" type="hidden" value="<?php echo $skills_csv; ?>">
+				<input name="job_history_csv" type="hidden" value="<?php echo $job_history_csv; ?>">
 
 			  <font color="red">* </font><font color="grey">Required fields - must be filled!</font><br><br>
 				<div class="form-group mx-auto" style = "max-width: 400px">
