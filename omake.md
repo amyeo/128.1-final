@@ -44,7 +44,7 @@ Please note the variable names. The variable names match the code of this exampl
 #### Congratulations
 You have sent the HTML table as a CSV string to the server.
 
-##PHP: Parse the CSV string from POST  and add as rows to a DB table
+## PHP: Parse the CSV string from POST  and add as rows to a DB table
 ### Step 1
 #### Use the following PHP code to get post data and load to a string
 ```
