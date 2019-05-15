@@ -36,7 +36,67 @@
     }
   </style>
   <script>
+    function display_applicants () {
+      if (window.XMLHttpRequest) {
+          xmlhttp=new XMLHttpRequest();
+      }
+     else {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById('table_body').innerHTML = this.responseText;
+          }
+        };
+      xmlhttp.open("GET", "pending_applicants_handler.php?" + "function=1", true);
+      xmlhttp.send();
+    }
 
+    $(document).ready(function () {
+      $(document).on('mouseenter', 'tr' , function () {
+        $(this).children('.hide_on_hover').hide();
+        $(this).children('.details_container').show();
+      });
+      $(document).on('mouseleave', 'tr' , function () {
+        $(this).children('.hide_on_hover').show();
+        $(this).children('.details_container').hide();
+      });
+      $(document).on('click', '.accept', function () {
+        var id = $(this).parent().parent().parent().parent().attr('id');
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        }
+       else {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('response_text').innerHTML = this.responseText;
+            }
+          };
+        xmlhttp.open("GET", "pending_applicants_handler.php?" + "function=2" + "&id=" + id, true);
+        xmlhttp.send();
+        display_applicants();
+      });
+      $(document).on('click', '.reject', function () {
+        var id = $(this).parent().parent().parent().parent().attr('id');
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        }
+       else {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('response_text').innerHTML = this.responseText;
+            }
+          };
+        xmlhttp.open("GET", "http://localhost:80/" + "128.1 Final Version/128.1-final/codes/arvin/testreg/pending_applicants_handler.php?" + "function=3" + "&id=" + id, true);
+        xmlhttp.send();
+        display_applicants();
+      });
+      display_applicants();
+    });
   </script>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -61,17 +121,17 @@
           <h5 class="card-title">Pending Applicants Roster</h5>
           <p class="card-text" style="max-width: 700px; margin-left: 22%">The following table displays applicants who have passed initial screenings. Selecting approve would begin the process for setting-up the person's employee profile while rejecting the applicant would remove them from this roster.</p>
         </div>
-        <div class="card-footer text-muted">
-          Last entry 2 days ago
+        <div id='response_text' class="card-footer text-muted">
+          No recent changes made.
         </div>
       </div>
-      <div class="card" style="display: flex; justify-content: center; flex-direction: row">
+      <div class="card" style="display: flex; justify-content: center; flex-direction: row;">
         <!ARVIN: editted portion of the code>
           <table id='pending_table' name='pending_container' class='table' style="width: 80%; margin: 3%;">
             <thead>
               <tr>
                 <th style="width: 5%"> ID </th>
-                <th style="width: 50%"> Name </th>
+                <th style="width: 45%"> Name </th>
                 <th> Target Position </th>
               </tr>
             </thead>
@@ -84,27 +144,7 @@
 
   </body>
 
-  <footer class="footer text-center " style = "margin-left: -40px;" >
-		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
-		  <div class="row">
-			<div class="col-md-4 mb-2 mb-lg-0">
-			  <h4 class="text-uppercase mb-4">Location</h4>
-			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
-			</div>
 
-
-			<p>
-			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
-			</p>
-
-
-			<div class="col-md-4">
-			  <h4 class="text-uppercase mb-4">About Us</h4>
-			  <p class="lead mb-0">CS 127 Group</p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
 
 
 </html>
