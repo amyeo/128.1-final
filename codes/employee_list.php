@@ -94,7 +94,7 @@ if(mysqli_connect_errno()){
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">List of Employees<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "admin.php">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 
@@ -133,7 +133,7 @@ if(mysqli_connect_errno()){
 							<th ><?php print $row["id"]; ?></th>
 							<td ><?php print $row["last_name"];?>, <?php print $row["first_name"]; ?></td>
 							<td ><?php print $row["email"]; ?></td>
-							<td><a href = 'edit_employee.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'suubmit'>Edit</button></a><a href = 'delete_employee.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'suubmit'>Delete</button></a></td>
+							<td><a href = 'edit_employee.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'suubmit'>Edit</button></a><a href = 'confirm_delete_page.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'submit'>Delete</button></a></td>
 							</tr>
 						<?php $count++; 
 					} ?>
@@ -141,7 +141,7 @@ if(mysqli_connect_errno()){
 				</table>
 				<br><br>
 				
-				<div class="form-group mx-auto" style = "max-width: 500px"><input id="finish" type="button" class="btn btn-danger btn-block" value= "Back" ></div>
+				<div class="form-group mx-auto" style = "max-width: 500px"><a href = "admin.php" class="btn btn-danger btn-block">Back</a></div>
 			</form>
 		</article>
 	</div>
