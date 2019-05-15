@@ -12,10 +12,9 @@ if(mysqli_connect_errno()){
 }
 
 
-if(isset($_POST['deny'])){
+if(isset($_POST['approve'])){
 	$id = $_POST['id'];
-	mysqli_query($link, "UPDATE applicants SET `approved` = '2' WHERE id='".$id."'");
-	?><script> alert("Application form of ID: <?php echo $id?> has been denied"); </script><?php
+	mysqli_query($link, "UPDATE applicants SET `approved` = '1' WHERE id='".$id."'");
 	//header('location: admin.html');
 	
 }
@@ -28,7 +27,7 @@ if(isset($_POST['deny'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>Approved Applicants</title>
+    <title>Completed Applications</title>
 	<link rel="icon" href="images/cropped-UPseal-newcolors-192x192.png" sizes="192x192">
 
 	<script src="js/jquery-3.3.1.min_2.js"></script>
@@ -82,7 +81,7 @@ if(isset($_POST['deny'])){
 			  <li>
 			  </li>
 			  <li class="nav-item active">
-				<a class="nav-link logoInfo" href="#" style = "color:#fff;">List of Approved Applicants<span class="sr-only">(current)</span></a>
+				<a class="nav-link logoInfo" href="#" style = "color:#fff;">List of Added Applicants<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
 			<a class = "UPlogo"style = "color:#fff;" href = "admin.php">University of the Philippines Manila</a>
@@ -105,19 +104,18 @@ if(isset($_POST['deny'])){
 				<!--List-->
 				
 				
-				<table class="table" style = "width: 1000px;">
+				<table class="table" style = "width: 1300px;">
 				  <thead>
 					<tr>
 					  <th scope="col">Full Name</th>
 					  <th scope="col">Sex</th>
 					  <th scope="col">Address</th>
 					  <th scope="col">Target Position</th>
-					  <th scope="col">Action</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					<?php $count=1;
-						$sel_query="SELECT * from applicants WHERE `approved` = '1' ORDER BY id asc;";
+						$sel_query="SELECT * from applicants WHERE `approved` = '3' ORDER BY id asc;";
 						$result = mysqli_query($link,$sel_query);
 						
 						while($row = mysqli_fetch_assoc($result)) { ?>
@@ -139,7 +137,7 @@ if(isset($_POST['deny'])){
 							
 							
 							print $pos; ?></td>
-							<td><a href = 'add_employee.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn container">Add as Employee</button></a><form method = "post"><input type = "text" name = "id" value = "<?php print $row["id"]?>" hidden><input class="btn btn-danger btn container" type = 'submit' name = "deny" value = "Deny Application"></form></td>
+							
 							</tr>
 						<?php $count++; 
 					} ?>
@@ -148,11 +146,31 @@ if(isset($_POST['deny'])){
 				<br><br>
 				
 				<div class="form-group mx-auto" style = "max-width: 500px"><a href = "admin.php" class="btn btn-danger btn-block">Back</a></div>
+			
 		</article>
 	</div>
-	
 
 
-
+<footer class="footer text-center" >
+		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
+		  <div class="row">
+			<div class="col-md-4 mb-2 mb-lg-0">
+			  <h4 class="text-uppercase mb-4">Location</h4>
+			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
+			</div>
+			
+			
+			<p>
+			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
+			</p>
+			
+			
+			<div class="col-md-4">
+			  <h4 class="text-uppercase mb-4">About Us</h4>
+			  <p class="lead mb-0">CS 127 Group</p>
+			</div>
+		  </div>
+		</div>
+	  </footer>
 
   </body>
