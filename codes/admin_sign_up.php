@@ -115,7 +115,7 @@ if(isset($_POST['logOut'])){
 						<!-- form-group// -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> Password </span>
+								<span class="input-group-text"> Password: </span>
 							 </div>
 							<input name="password1" class="form-control" type="password" required value = "<?php echo $password1?>">
 						</div> 
