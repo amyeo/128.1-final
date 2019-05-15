@@ -1,3 +1,0 @@
-Header set Access-Control-Allow-Origin "*"
-php_value upload_max_filesize 500M
-php_value post_max_size 501M
