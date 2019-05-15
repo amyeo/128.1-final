@@ -1,3 +1,26 @@
+<?php
+
+$id = $_GET['id'];
+
+if(isset($_POST['delete'])){
+	$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
+	$stmt = $db->prepare("DELETE FROM employee WHERE `id` = '$id'"); 
+	$stmt->execute();
+	
+	
+	?>
+	<script> alert("Employee Sucessfully deleted"); </script>
+	<?php
+	header('location: employee_list.php');
+}
+
+
+
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -79,8 +102,40 @@
 		<div class = "row">
 			<h2> Delete Employee: </h2>
 		</div>
+		
+		<?php 
+			$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
+			$stmt = $db->prepare("SELECT * FROM employee WHERE `id` = '$id'"); 
+			$stmt->execute();
+			$results_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$last_name = "";
+			$middle_name = "";
+			$first_name = "";
+			foreach ($results_arr as $i => $values) {
+				foreach ($values as $key => $value) {
+					if($key=="last_name")$last_name = $value;
+					if($key=="middle_name")$middle_name = $value;
+					if($key=="first_name")$first_name = $value;
+					if($key=="job_position")$job_position = $value;
+					if($key=="employment_date")$employment_date = $value;
+					
+				}
+			}
+		?>
 		<div class = "row">
-			<input readonly name="last_name" value="last_name" style="border: none"/>, <input readonly name="first_name" value="first_name" style="border: none"/>?
+			<table class = "table">
+				<thead>
+					<th>Full Name</th>
+					<th>Job Position</th>
+					<th>Employment Date</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><?php echo $last_name ?>, <?php echo $first_name ?> <?php echo $middle_name ?></td>
+						<td><?php echo $job_position ?></td>
+						<td><?php echo $employment_date ?></td>
+					</tr>
+				<tbody>
 		</div><br>
 		
 		<form method = "post">
@@ -91,7 +146,7 @@
 						<button type="button" onclick="javascript:history.back()" class="btn btn-primary btn-block">Cancel</button>
 					</div>
 					<div class = "col">
-						<button type="submit" class="btn btn-primary btn-block">Delete</button>
+						<button type="submit" name = "delete" class="btn btn-primary btn-block">Delete</button>
 					</div>
 				</div>
 		</form>
