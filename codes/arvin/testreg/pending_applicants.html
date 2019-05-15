@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+  <!- title design -!>
+  <title>Pending Applicants</title>
+  <link rel="icon" href="images/cropped-UPseal-newcolors-192x192.png" sizes="192x192">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <script src="js/jquery-3.3.1.min_2.js"></script>
+    <script src="js/popper.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
+    <script src="js/util.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+	  <link rel="stylesheet" href="styles.css">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+	  <link rel="stylesheet" href="progress-indicator/progress-indicator.scss">
+    <link rel="stylesheet" href="signUpStyles.css">
+  </head>
+
+  <!- inline style import -!>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <script>
+    $(document).ready(function(){
+      $('.row_hover').hover(function (){
+        $('.profile_hover').slideDown(400, function(){});
+        $('.hover').hide();
+      });
+    });
+  </script>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  			<span class="navbar-toggler-icon"></span>
+  		  </button>
+
+  		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  			<ul class="navbar-nav mr-auto">
+  			  <li>
+  			  </li>
+  			  <li class="nav-item active">
+  				<a class="nav-link logoInfo" href="#" style = "color:#fff; cursor: default">Pending Applicants<span class="sr-only">(current)</span></a>
+  			  </li>
+  			</ul>
+  			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+  		  </div>
+  	</nav>
+    <div class="card bg1-light">
+      <div class="card text-center" style="width: 100%">
+        <div class="card-body">
+          <h5 class="card-title">Pending Applicants Roster</h5>
+          <p class="card-text" style="max-width: 700px; margin-left: 22%">The following table displays applicants who have passed initial screenings. Selecting approve would begin the process for setting-up the person's employee profile while rejecting the applicant would remove them from this roster.</p>
+        </div>
+        <div class="card-footer text-muted">
+          Last entry 2 days ago
+        </div>
+      </div>
+      <article class="card-body mx-auto" style="max-width: 800px;">
+        <table class="table" style="width:1000px; padding-left:0">
+          <tbody>
+            <tr class="row_hover">
+              <th scope="row">1</th>
+              <td class="hover">Mark Otto</td>
+              <td class="hover">May 1, 2019</td>
+              <td class="profile_hover" style="display: none">
+                <div class="card mb-3" style="width:800px;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="arduinologo.png" class="card-img" alt="..." style="max-height: 200px; width: auto; margin-left: 20px; margin-right: 0">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Mark Otto</h5>
+                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Target Position: </p>
+                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Educational Attainment: </p>
+                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Phone number: </p>
+                        <p style="line-height: 0.5; margin-left: 10px; font-size: 0.8rem">Linked-In Profile: </p>
+                        <a class="btn btn-danger" href="approve_applicant.php?id=1">Approve</a>
+                        <a class="btn btn-outline-danger" href="reject_applicant.php?id=1">Reject</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob Thornton</td>
+              <td>April 3, 2019</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry King</td>
+              <td>March 8. 2019</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </article>
+    </div>
+
+  </body>
+  
+  <footer class="footer text-center " style = "margin-left: -40px;" >
+		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
+		  <div class="row">
+			<div class="col-md-4 mb-2 mb-lg-0">
+			  <h4 class="text-uppercase mb-4">Location</h4>
+			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
+			</div>
+			
+			
+			<p>
+			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
+			</p>
+			
+			
+			<div class="col-md-4">
+			  <h4 class="text-uppercase mb-4">About Us</h4>
+			  <p class="lead mb-0">CS 127 Group</p>
+			</div>
+		  </div>
+		</div>
+	  </footer>
+
+
+</html>
