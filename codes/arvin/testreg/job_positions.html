@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <title>Employee List</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <!-script imports-!>
+	  <script src="js/jquery-3.3.1.min_2.js"></script>
+	  <script src="js/popper.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
+	  <script src="js/util.js"></script>
+	  <script src="ourScript.js"></script>
+    <script src="js/formvalidate.js"></script>
+
+    <!-style imports-!>
+    <link rel="icon" href="images/cropped-UPseal-newcolors-192x192.png" sizes="192x192">
+    <link rel="stylesheet" href="css/bootstrap.css">
+	  <link rel="stylesheet" href="styles.css">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+	  <link rel="stylesheet" href="progress-indicator/progress-indicator.scss">
+    <link rel="stylesheet" href="signUpStyles.css">
+
+    <!-inline styles -!>
+    <style>
+      .table {
+        width: 140%;
+      }
+      .input_description {
+        width: 100%;
+      }
+    </style>
+
+    <!-main script handler-!>
+  	<script>
+      function load_jobs () {
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        }
+       else {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('table_container').innerHTML = this.responseText;
+            }
+          };
+        xmlhttp.open("GET", "http://localhost:80/" + "cs 128.1 from Sora" + "/job_positions_handler.php?" + "function=1", true);
+        xmlhttp.send();
+      }
+
+      function delete_position (id) {
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        }
+       else {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('table_container').innerHTML = this.responseText;
+            }
+          };
+        xmlhttp.open("GET", "http://localhost:80/" + "cs 128.1 from Sora" + "/job_positions_handler.php?" + "function=2" +"&id=" + id, true);
+        xmlhttp.send();
+      }
+
+      function add_position (row) {
+        var title = row.children('.title').children('#add_name').val();
+        var description = row.children('.description').children('#add_description').val();
+        var status = row.children('.status').children('#add_status').val();
+
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        }
+       else {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('table_container').innerHTML = this.responseText;
+            }
+          };
+        xmlhttp.open("GET", "http://localhost:80/" + "cs 128.1 from Sora" + "/job_positions_handler.php?" + "function=4" + "&title=" + title + "&description=" + description + "&status=" + status, true);
+        xmlhttp.send();
+      }
+
+
+      function update_position (row) {
+        var id = row.children('.id_number').html();
+        var title = row.children('.title').children('.input_title').val();
+        var description = row.children('.description').children('.input_description').val();
+        var status = row.children('.status').children('.input_status').val();
+
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        }
+       else {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('table_container').innerHTML = this.responseText;
+            }
+          };
+        xmlhttp.open("GET", "http://localhost:80/" + "cs 128.1 from Sora" + "/job_positions_handler.php?" + "function=3" + "&id=" + id + "&title=" + title + "&description=" + description + "&status=" + status, true);
+        xmlhttp.send();
+      }
+
+
+
+
+
+
+  		$(document).ready(function(){
+        load_jobs();
+
+        $(document).on('click','.delete_record', function () {
+          delete_position ($(this).parent().parent().children('.id_number').html());
+          return false;
+        });
+
+        $(document).on('focus','.clear_enter',function() {
+          $(this).val('');
+        });
+
+        $(document).on('click','.confirm_edit', function() {
+          update_position($(this).parent().parent());
+        });
+
+        $(document).on('click', '#add_button', function() {
+          add_position($(this).parent().parent());
+        });
+
+        $(document).on('click','.edit_record',function() {
+
+          $(this).addClass('confirm_edit');
+          $(this).removeClass('edit_record');
+          $(this).html('Confirm');
+          $(this).addClass('btn-secondary');
+          $(this).removeClass('btn-danger');
+
+          var title = $('<input></input>');
+          title.attr('type','text');
+          title.val($(this).parent().parent().children('.title').html());
+          title.addClass('input_title');
+          title.addClass('clear_enter');
+          $(this).parent().parent().children('.title').html('');
+          $(this).parent().parent().children('.title').append(title);
+
+          var description = $('<input></input>');
+          description.attr('type','textarea');
+          description.val($(this).parent().parent().children('.description').html());
+          description.addClass('input_description');
+          description.addClass('clear_enter');
+          $(this).parent().parent().children('.description').html('');
+          $(this).parent().parent().children('.description').append(description);
+
+          var select_status = $('<select></select>');
+          select_status.addClass('input_status');
+          var open = $('<option></option>');
+          open.attr('value','1');
+          open.html('Open')
+
+          var closed= $('<option></option');
+          closed.attr('value','0');
+          closed.html('Closed');
+
+          if ($(this).parent().parent().children('.status').html() == 'Open') {
+            open.attr('selected','true');
+          }
+          else {
+            closed.attr('selected','true');
+          }
+
+          select_status.append(open);
+          select_status.append(closed);
+
+          $(this).parent().parent().children('.status').html('');
+          $(this).parent().parent().children('.status').append(select_status);
+
+          return false;
+        });
+  		});
+  	</script>
+
+
+
+  </head>
+
+
+
+  <body>
+
+  	<!-NAV Bar-!>
+  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  			<span class="navbar-toggler-icon"></span>
+  		  </button>
+
+  		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  			<ul class="navbar-nav mr-auto">
+  			  <li>
+  			  </li>
+  			  <li class="nav-item active">
+  				<a class="nav-link logoInfo" href="#" style = "color:#fff;">List of Job Positions<span class="sr-only">(current)</span></a>
+  			  </li>
+  			</ul>
+  			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+  		  </div>
+  	</nav>
+    <!-end of navbar-!>
+
+
+
+
+  	<div class="card bg1-light" style="padding-left:9%">
+  		<article class="card-body" style="max-width: 1000px; display: flex; justify-content:center; flex-direction: column;">
+        <div id='table_container'>
+
+        </div>
+  		</article>
+
+  	</div>
+    <form id="results_form" method = "post" name = "finished_page" action = "">
+      <!-add redirect here-!>
+      <div class="form-group mx-auto" style = "max-width: 300px"><input id="finish" type="button" class="btn btn-danger btn-block" value= "Back" ></div>
+    </form>
+
+    <!-page footer!->
+    <footer class="footer text-center" >
+  		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
+  		  <div class="row">
+    			<div class="col-md-4 mb-2 mb-lg-0">
+    			  <h4 class="text-uppercase mb-4">Location</h4>
+    			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
+    			</div>
+    			<p>
+    			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
+    			</p>
+    			<div class="col-md-4">
+    			  <h4 class="text-uppercase mb-4">About Us</h4>
+    			  <p class="lead mb-0">CS 127 Group</p>
+    			</div>
+  		  </div>
+  		</div>
+  	 </footer>
+
+  </body>
