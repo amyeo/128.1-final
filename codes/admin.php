@@ -9,24 +9,24 @@ if(isset($_SESSION['adminUser'])){
 
 $username = "";
 if(isset($_POST['logIn'])){
-	
+
 	$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
 	$password = md5(strip_tags($_POST['password']));
 	$username = strip_tags($_POST['username']);
-	
-	
-	$stmt = $db->prepare("SELECT * FROM admin WHERE `username` = '$username' AND `user_password` = '$password'"); 
+
+
+	$stmt = $db->prepare("SELECT * FROM admin WHERE `username` = '$username' AND `user_password` = '$password'");
 	$stmt->execute();
 	$results_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	
+
 	$checked = "";
 	foreach ($results_arr as $i => $values) {
 		foreach ($values as $key => $value) {
 			if($key=="username")$checked = $value;
-			
+
 		}
 	}
-	
+
 	if($checked!=""){
 		$_SESSION['adminUser'] = $checked;
 		?>
@@ -36,9 +36,9 @@ if(isset($_POST['logIn'])){
 	else{ ?>
 		<script> alert("Invalid Username or Password"); </script>
 	<?php }
-		
-	
-	
+
+
+
 }
 
 if(isset($_POST['logOut'])){
@@ -66,9 +66,9 @@ if(isset($_POST['logOut'])){
 <script src="js/bootstrap.min.js"></script>
 <script src="js/util.js"></script>
   <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="css/font-awesome.min.css"
-
+<link rel="stylesheet" href="css/footer.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link rel="stylesheet" href="progress-indicator/progress-indicator.scss">
@@ -86,7 +86,7 @@ if(isset($_POST['logOut'])){
 			  <li>
 			  </li>
 			  <li class="nav-item active">
-				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Home<span class="sr-only">(current)</span></a>
+				<a class="nav-link logoInfo" href="index.html" style = "color:#fff;">Home<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
 			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
@@ -94,31 +94,31 @@ if(isset($_POST['logOut'])){
 	</nav>
 
 	<div class="card bg1-light" style = "height: 500px; background-image: url('images/oble.jpg'); background-repeat: no-repeat;">
-	
-		
+
+
 			<article class="card-body mx-auto" style="max-width: 1280px;"><br>
 				<?php if(isset($_SESSION['adminUser'])){ ?>
-					<h1 align = "center">ACTIONS</h1><br>
+					<h2 align = "center">ACTIONS</h2><br>
 					<div class="row">
 					  <div class="col-sm">
 						<div class="container" align="center"><a href="completed_applicants.php">
-						<div class="card">
-						<img src="images/applicant.png" style="width:200px; border: none;">Completed Applications</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/applicant.png" style="width:200px; border: none;"><br><h5>Completed Applications</h5></span></a></div>
 					  </div>
 					 <div class="col-sm">
 						<div class="container" align="center"><a href="approved_applicants.php">
-						<div class="card">
-						<img src="images/approved.png" style="width:200px; border: none;">List Approved Applicants</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/approved.png" style="width:200px; border: none;"><br><h5>List Approved Applicants</h5></span></a></div>
 					  </div>
 					<div class="col-sm">
 						<div class="container" align="center"><a href="unapproved_applicants.php">
-						<div class="card">
-						<img src="images/unapproved.png" style="width:200px; border: none;">List Unapproved Applicants</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/unapproved.png" style="width:200px; border: none;"><h5>List Unapproved Applicants</h5></span></a></div>
 					  </div>
 					<div class="col-sm">
 						<div class="container" align="center"><a href="employee_list.php">
-						<div class="card">
-						<img src="images/employee.png" style="width:200px; border: none;">List Employees</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/employee.png" style="width:200px; border: none;"><h5>List Employees</h5></span></a></div>
 					  </div>
 					</div>
 					<form method = 'post'><br><br>
@@ -128,7 +128,7 @@ if(isset($_POST['logOut'])){
 					</form>
 				<?php }else{ ?><br><br>
 					<h1 align = "center">Please Log In to continue:</h1><br>
-					
+
 					<form method = 'post'>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
@@ -141,13 +141,13 @@ if(isset($_POST['logOut'])){
 								<span class="input-group-text"> Password </span>
 							 </div>
 							<input name="password" class="form-control" type="password">
-						</div> 
+						</div>
 						<br>
 						<div class="form-group">
 							<input type="submit" name = "logIn" class="btn btn-danger btn-block" value = "Sign In">
 						</div>
 					</form>
-					
+
 					<form method = 'post' action = "admin_sign_up.php">
 						<div class="form-group">
 							<input type="submit" class="btn btn-danger btn-block" value = "Register">
@@ -158,7 +158,33 @@ if(isset($_POST['logOut'])){
 	</div>
 </div>
 
-<hr>
-<img alt="logo" src="images/logo.png" style="height:80px;" class="center">
+<footer class="footer" id="myFooter" >
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="register.html">Apply </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li><a href="contactus.html">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+           <div class="container">
+                <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+            </div>
+    </footer>
 </body>
 </html>

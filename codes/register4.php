@@ -108,11 +108,11 @@ $query = $db->prepare ("INSERT INTO applicants (first_name, last_name
 place_of_birth, birthdate, phone_number,
 email,linkedin_profile, educational_attainment,
 civil_status, nationality, SSN,
-job_history_csv, skills_csv, target_position, user_password, birth_certificate_id) VALUES ('" . $first_name . "', '" . 
+job_history_csv, skills_csv, target_position, user_password, birth_certificate_id) VALUES ('" . $first_name . "', '" .
 $last_name . "', '" . $middle_initial . "', '" . $sex . "', '" .
-$full_address . "', '" . $place_of_birth . "', '" . $birthday . "', '" . 
-$phone_number . "', '" . $email . "', '" . $linkedin_profile . "', '" . 
-$educational_attainment . "', '" . $civil_status . "', '" . $nationality . "', '" . 
+$full_address . "', '" . $place_of_birth . "', '" . $birthday . "', '" .
+$phone_number . "', '" . $email . "', '" . $linkedin_profile . "', '" .
+$educational_attainment . "', '" . $civil_status . "', '" . $nationality . "', '" .
 $SSN . "', '" . $job_history_csv . "', '" . $employee_skills_csv . "', '" . $target_position . "', '" . $_POST["results_password1"] . "', '" . $birth_cert_id  . "')");
 
 //$query->debugDumpParams();
@@ -156,7 +156,7 @@ foreach ($results_arr as $i => $values) {
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -238,18 +238,46 @@ foreach ($results_arr as $i => $values) {
 				<!--Dependencies-->
 				<h4 align = "center" style = "width: 1000px">Thank you for submitting the application form. Your details will be validated soon. You check your application status through the link below.</h2>
 				<br>
-				
+
 				<h4 align = "center" style = "width: 1000px">ID: <?php echo $incrementedID ?></h2>
 				<br>
-				
+
 				<h4 align = "center" style = "width: 1000px">Password: <?php echo $_POST["results_password1"]; ?></h2>
 				<br><br><br>
-				
+
 			</form>
 		</article>
 	</div>
 
 
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
 
   </body>
+</html>

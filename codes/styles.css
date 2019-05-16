@@ -1,3 +1,11 @@
+h4 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.content{
+  margi-bottom:20px;
+}
 .bg-light{
     background-color: #7B1113 !important;
 }
@@ -51,9 +59,8 @@ p1{
     padding-bottom: 17px;
     background-color: maroon!important;
     color: #fff;
-    position: fixed;
+    position:relative;
     bottom: 0;
-    margin-left: -40px;
     width: 100%;
 }
 
@@ -157,6 +164,7 @@ body {
 .nav-tabs > li a:hover{
     background: transparent;
 }
+
 
 .nav-tabs > li span {
     width: 70px;

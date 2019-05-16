@@ -32,7 +32,7 @@ if(mysqli_connect_errno()){
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -114,8 +114,8 @@ if(mysqli_connect_errno()){
 
 
 				<!--Dependencies-->
-				
-				
+
+
 				<table class="table" style = "width: 1000px;">
 				  <thead>
 					<tr>
@@ -138,41 +138,47 @@ if(mysqli_connect_errno()){
 						<td ><?php print $row["package_desc"]; ?></td>
 						<td><a href = 'edit_health_package.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'suubmit'>Edit</button></a><a href = 'delete_health_package.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'suubmit'>Delete</button></a></td>
 						</tr>
-						<?php $count++; 
+						<?php $count++;
 					} ?>
 					</tbody>
-					
-					
+
+
 				  </tbody>
 				</table>
 				<br><br>
-				
+
 				<div class="form-group mx-auto" style = "max-width: 500px"><input id="finish" type="button" class="btn btn-danger btn-block" value= "Back" ></div>
 			</form>
 		</article>
 	</div>
 
-
-<footer class="footer text-center" >
-		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
-		  <div class="row">
-			<div class="col-md-4 mb-2 mb-lg-0">
-			  <h4 class="text-uppercase mb-4">Location</h4>
-			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
-			</div>
-			
-			
-			<p>
-			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
-			</p>
-			
-			
-			<div class="col-md-4">
-			  <h4 class="text-uppercase mb-4">About Us</h4>
-			  <p class="lead mb-0">CS 127 Group</p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
   </body>
+</html>

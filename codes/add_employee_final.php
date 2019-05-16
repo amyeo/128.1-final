@@ -80,11 +80,11 @@ $query = $db->prepare ("INSERT INTO employee (first_name, last_name
 ,middle_initial, sex, current_address,
 place_of_birth, birthdate, phone_number,
 email,linkedin_profile, educational_attainment,
-civil_status, nationality, SSN, job_position, birth_certificate_id, health_package) VALUES ('" . $first_name . "', '" . 
+civil_status, nationality, SSN, job_position, birth_certificate_id, health_package) VALUES ('" . $first_name . "', '" .
 $last_name . "', '" . $middle_initial . "', '" . $sex . "', '" .
-$full_address . "', '" . $place_of_birth . "', '" . $birthday . "', '" . 
-$phone_number . "', '" . $email . "', '" . $linkedin_profile . "', '" . 
-$educational_attainment . "', '" . $civil_status . "', '" . $nationality . "', '" . 
+$full_address . "', '" . $place_of_birth . "', '" . $birthday . "', '" .
+$phone_number . "', '" . $email . "', '" . $linkedin_profile . "', '" .
+$educational_attainment . "', '" . $civil_status . "', '" . $nationality . "', '" .
 $SSN . "', '" . $target_position . "', '" . $birth_cert_id . "', '" . $health_package  . "')");
 
 //$query->debugDumpParams();
@@ -171,7 +171,7 @@ mysqli_query($link, $querystr);
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -253,7 +253,7 @@ mysqli_query($link, $querystr);
 				<!--Dependencies-->
 				<h4 align = "center" style = "width: 1000px">Employee added</h2>
 				<br>
-				
+
 				<div>
 				<a class = "btn btn-danger container" href = "admin.php">Home</a>
 				</div>
@@ -262,6 +262,34 @@ mysqli_query($link, $querystr);
 	</div>
 
 
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
 
   </body>
+</html>

@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/footer.css">
 	<style>
 	table, td {
   	border: 1px solid black;
@@ -128,7 +129,7 @@
         }
 
 				function SubmitAsString(){
-					
+
             var outString_dependents = "";
             var table = document.getElementById("DependentsTable");
             for (var i = 1, row; row = table.rows[i]; i++) {
@@ -141,7 +142,7 @@
                     if(j<2){
 											outString_dependents = outString_dependents + ",";
                     }
-                }  
+                }
                 outString_dependents = outString_dependents + ";";
 								console.log()
             }
@@ -160,7 +161,7 @@
                     if(j<1){
 											outString_skills = outString_skills+ ",";
                     }
-                }  
+                }
                 outString_skills = outString_skills + ";";
             }
             document.getElementById("skills_table_csv").value = outString_skills
@@ -177,7 +178,7 @@
                     if(j<2){
 											outString_jhist = outString_jhist + ",";
                     }
-                }  
+                }
                 outString_jhist = outString_jhist + ";";
             }
             document.getElementById("job_history_table_csv").value = outString_jhist;
@@ -301,5 +302,33 @@
 	</div>
 
 
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
   </body>
+</html>

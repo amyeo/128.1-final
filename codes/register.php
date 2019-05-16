@@ -19,7 +19,7 @@ if(mysqli_connect_errno()){
     <meta name="description" content="">
     <title>New Applicant</title>
 	<link rel="icon" href="images/cropped-UPseal-newcolors-192x192.png" sizes="192x192">
-	
+
 	<script src="js/jquery-3.3.1.min_2.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -27,13 +27,13 @@ if(mysqli_connect_errno()){
 	<script src="ourScript.js"></script>
 	<script src="js/formvalidate.js"></script>
 
-	
+
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-	
-	
+<link rel="stylesheet" href="css/footer.css">
+
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-	
+
 	<link rel="stylesheet" href="progress-indicator/progress-indicator.scss">
 
     <!-- Bootstrap core CSS -->
@@ -77,10 +77,10 @@ if(mysqli_connect_errno()){
 				$(".deleteThis").click(function(){
 					$(this.parentNode).remove();
 				})
-	
+
 			});
 		</script>
-	
+
     <!-- Custom styles for this template -->
 	<link rel="stylesheet" href="signUpStyles.css">
   </head>
@@ -103,19 +103,19 @@ if(mysqli_connect_errno()){
 			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
 		  </div>
 	</nav>
-	
-	
 
-	
+
+
+
 	<div class="card bg1-light">
 		<article class="card-body mx-auto" style="max-width: 800px;">
-		
+
 			 <div class="row"><div class = "col-sm mx-auto"style="max-width: 500px;">
 			  <img src="images/progress1.png" style="height:120px;margin:0px;">
 			</div></div>
-		
 
-				
+
+
 			<form id="addnew" method = 'post' action = "register2.php">
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
@@ -138,8 +138,8 @@ if(mysqli_connect_errno()){
 							 </div>
 							<input name="middle_initial" class="form-control" style = "max-width: 400px;" type="text"><font color="red">*</font>
 						</div> <!-- form-group// -->
-						
-						
+
+
 					</div>
 					<div class = "col">
 						<div class="form-group input-group">
@@ -168,7 +168,7 @@ if(mysqli_connect_errno()){
 					<input name="place_of_birth" class="form-control" type="text"><font color="red">*</font>
 				</div> <!-- form-group end.// -->
 
-				
+
 
 
 				<!-- insert bday here-->
@@ -183,7 +183,7 @@ if(mysqli_connect_errno()){
 				<!----------------------->
 
 
-				
+
 
 
 
@@ -235,7 +235,7 @@ if(mysqli_connect_errno()){
 						</div> <!-- form-group// -->
 					</div>
 				</div>
-				
+
 				<div class = "row">
 					<div class = "col">
 						<div class="form-group input-group">
@@ -254,8 +254,8 @@ if(mysqli_connect_errno()){
 						</div>
 					</div>
 				</div>
-				
-				
+
+
 				<div class = "row" id = "skill_form">
 						<div class = "col-10">
 							<div class="form-group input-group">
@@ -269,9 +269,9 @@ if(mysqli_connect_errno()){
 							<button id="add_skills">Add Skills</button>
 						</div>
 					</div>
-					
+
 					<input id = "skillVal" type = "text" name = "skill_count" value = "1" hidden>
-				
+
 				<!--
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
@@ -280,7 +280,7 @@ if(mysqli_connect_errno()){
 					<input name="employment_history" class="form-control" placeholder="" type="text"><font color="red">*</font>
 				</div>
 				-->
-				
+
 
 				<div class = "row">
 					<div class = "col-4">
@@ -294,10 +294,10 @@ if(mysqli_connect_errno()){
             $result = mysqli_query($link,$sel_query);
             while($row = mysqli_fetch_assoc($result)) { ?>
             <option id="<?php print $row["id"]; ?>" value="<?php print $row["id"]; ?>"><?php print $row["job_title"]; ?></option>
-            <?php $count++; } ?>    
+            <?php $count++; } ?>
             </select><font color="red">*</font>
 							</div>
-							
+
 						</div> <!-- form-group// -->
 					</div>
 					<div class = "col-8">
@@ -320,9 +320,37 @@ if(mysqli_connect_errno()){
 			</form>
 		</article>
 	</div>
-	
-	
 
 
 
+
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
   </body>
+  </html>

@@ -27,7 +27,7 @@ $fill_data = false;
 
 // if id exists, try searching it. if it does not OR none provided, return error
 if($id != ""){
-    //check if id exists in the db 
+    //check if id exists in the db
     if($id_match_result = mysqli_query($link, "SELECT * FROM health_packages WHERE id='".$id."'")){
         $row_cnt = mysqli_num_rows($id_match_result);
         if($row_cnt>0){
@@ -49,7 +49,7 @@ if($id != ""){
 }
 
 if(isset($_POST['submitForm'])){
-		
+
 		mysqli_query($link, "DELETE FROM health_packages WHERE id='".$id."'");
 		header('location: health_packages.php');
 }
@@ -74,7 +74,7 @@ if(isset($_POST['submitForm'])){
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -138,10 +138,10 @@ if(isset($_POST['submitForm'])){
 
 
 				<!--Dependencies-->
-				
-				
+
+
 				<h2 align = "center" style = "width: 900px">Delete Health Package: <b><?php echo "$id" ?></b></h2><br>
-				
+
 
 				<div id = "new_package">
 					<div class = "row">
@@ -166,7 +166,7 @@ if(isset($_POST['submitForm'])){
 					</div>
 				</div>
 				<br><br>
-				
+
 				<div class="form-group mx-auto row" style = "max-width: 400px">
 					<div class = "col">
 						<div class="form-group mx-auto" style = "max-width: 500px"><a class="btn btn-danger btn-block" href = "health_packages.php">Back</a></div>
@@ -175,33 +175,39 @@ if(isset($_POST['submitForm'])){
 						<input type="submit" class="btn btn-danger btn-block" name = "submitForm" value= "Submit" >
 					</div>
 				</div>
-				
-				
+
+
 			</form>
 		</article>
 	</div>
 
-
-<footer class="footer text-center" >
-		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
-		  <div class="row">
-			<div class="col-md-4 mb-2 mb-lg-0">
-			  <h4 class="text-uppercase mb-4">Location</h4>
-			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
-			</div>
-			
-			
-			<p>
-			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
-			</p>
-			
-			
-			<div class="col-md-4">
-			  <h4 class="text-uppercase mb-4">About Us</h4>
-			  <p class="lead mb-0">CS 127 Group</p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
   </body>
+</html>

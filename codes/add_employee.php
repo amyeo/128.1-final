@@ -41,8 +41,8 @@ $job_history_csv = "";
 
 // if id exists, try searching it. if it does not OR none provided, return error
 if($id != ""){
-    //check if id exists in the db 
-	
+    //check if id exists in the db
+
     if($id_match_result = mysqli_query($link, "SELECT * FROM applicants WHERE id='".$id."'")){
         $row_cnt = mysqli_num_rows($id_match_result);
         if($row_cnt>0){
@@ -103,7 +103,7 @@ if($id != ""){
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -278,16 +278,16 @@ if($id != ""){
 					</div>
 					<input name="linkedin_profile" class="form-control" placeholder="optional" type="text" value = "<?php echo $linkedin_profile?>">
 				</div>
-				
+
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text">Assigned Job Position</span>
 					</div>
-					<input name="job_position" class="form-control" placeholder="optional" type="text" value = "<?php 
-					
+					<input name="job_position" class="form-control" placeholder="optional" type="text" value = "<?php
+
 					$target_position = $job_position;
 					$pos = "n/a";
-					
+
 					$sel_query2="SELECT * from job_positions WHERE `id` = '$target_position';";
 					$result2 = mysqli_query($link,$sel_query2);
 					while($row2 = mysqli_fetch_assoc($result2)) {
@@ -306,7 +306,7 @@ if($id != ""){
 							$result = mysqli_query($link,$sel_query);
 							while($row = mysqli_fetch_assoc($result)) { ?>
 							<option id="<?php print $row["id"]; ?>" value="<?php print $row["id"]; ?>"><?php print $row["package_name"]; ?></option>
-							<?php $count++; } ?>    
+							<?php $count++; } ?>
 							</select>
 					</div>
 				</div>
@@ -379,5 +379,33 @@ if($id != ""){
 	</div>
 
 </div>
-
+<footer class="footer" id="myFooter" >
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="register.html">Apply </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li><a href="contactus.html">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+           <div class="container">
+                <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+            </div>
+    </footer>
   </body>
+</html>

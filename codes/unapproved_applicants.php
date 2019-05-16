@@ -17,7 +17,7 @@ if(isset($_POST['approve'])){
 	mysqli_query($link, "UPDATE applicants SET `approved` = '1' WHERE id='".$id."'");
 	?><script> alert("Application form of ID: <?php echo $id?> has been approved"); </script><?php
 	//header('location: admin.html');
-	
+
 }
 ?>
 
@@ -40,7 +40,7 @@ if(isset($_POST['approve'])){
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -103,8 +103,8 @@ if(isset($_POST['approve'])){
 
 
 				<!--List-->
-				
-				
+
+
 				<table class="table" style = "width: 1300px;">
 				  <thead>
 					<tr>
@@ -119,60 +119,66 @@ if(isset($_POST['approve'])){
 					<?php $count=1;
 						$sel_query="SELECT * from applicants WHERE `approved` = '2' ORDER BY id asc;";
 						$result = mysqli_query($link,$sel_query);
-						
+
 						while($row = mysqli_fetch_assoc($result)) { ?>
 							<input type = 'text' name = 'id' value = '<?php print $row["id"]; ?>' hidden>
 							<td ><?php print $row["last_name"];?>, <?php print $row["first_name"]; ?> <?php print $row["middle_initial"]; ?></td>
 							<td ><?php print $row["sex"]; ?></td>
 							<td ><?php print $row["current_address"]; ?></td>
-							<td ><?php 
-							
+							<td ><?php
+
 							$target_position = $row["target_position"];
 							$pos = "n/a";
-							
+
 							$sel_query2="SELECT * from job_positions WHERE `id` = '$target_position';";
 							$result2 = mysqli_query($link,$sel_query2);
 							while($row2 = mysqli_fetch_assoc($result2)) {
 								$pos = $row2["job_title"];
 							}
-							
-							
-							
+
+
+
 							print $pos; ?></td>
 							<td><form method = "post"><input type = "text" name = "id" value = "<?php print $row["id"]?>" hidden><input class="btn btn-danger btn" type = 'submit' name = "approve" value = "Approve"></form></td>
 							</tr>
-						<?php $count++; 
+						<?php $count++;
 					} ?>
 				  </tbody>
 				</table>
 				<br><br>
-				
+
 				<div class="form-group mx-auto" style = "max-width: 500px"><a href = "admin.php" class="btn btn-danger btn-block">Back</a></div>
-			
+
 		</article>
 	</div>
 
-
-<footer class="footer text-center" >
-		<div class="container mx-auto" style = "max-width: 1000px; margin: 0;">
-		  <div class="row">
-			<div class="col-md-4 mb-2 mb-lg-0">
-			  <h4 class="text-uppercase mb-4">Location</h4>
-			  <p class="lead mb-0">Padre Faura Street, University of the Philippines Manila</p>
-			</div>
-			
-			
-			<p>
-			<img src="images/cropped-UPseal-newcolors-192x192.png" align = "middle" style="margin-left:70px; height:110px;">
-			</p>
-			
-			
-			<div class="col-md-4">
-			  <h4 class="text-uppercase mb-4">About Us</h4>
-			  <p class="lead mb-0">CS 127 Group</p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
   </body>
+</html>
