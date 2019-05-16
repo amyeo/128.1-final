@@ -67,7 +67,8 @@ if(isset($_POST['logOut'])){
 <script src="js/util.js"></script>
   <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="css/font-awesome.min.css"
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/footer.css">
 
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -96,38 +97,40 @@ if(isset($_POST['logOut'])){
 	<div class="card bg1-light" style = "height: 500px; background-image: url('images/oble.jpg'); background-repeat: no-repeat;">
 	
 		
-			<article class="card-body mx-auto" style="max-width: 1280px;"><br>
+			<article class="card-body mx-auto" style="max-width: 2000px;"><br>
 				<?php if(isset($_SESSION['adminUser'])){ ?>
 					<h1 align = "center">ACTIONS</h1><br>
 					<div class="row">
 					  <div class="col-sm">
 						<div class="container" align="center"><a href="completed_applicants.php">
-						<div class="card">
-						<img src="images/applicant.png" style="width:200px; border: none;">Completed Applications</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/applicant.png" style="width:200px; border: none;"><br>Completed Applications</span></a></div>
 					  </div>
 					 <div class="col-sm">
 						<div class="container" align="center"><a href="approved_applicants.php">
-						<div class="card">
-						<img src="images/approved.png" style="width:200px; border: none;">List Approved Applicants</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/approved.png" style="width:200px; border: none;"><br>List Approved Applicants</span></a></div>
 					  </div>
 					<div class="col-sm">
 						<div class="container" align="center"><a href="unapproved_applicants.php">
-						<div class="card">
-						<img src="images/unapproved.png" style="width:200px; border: none;">List Unapproved Applicants</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/unapproved.png" style="width:200px; border: none;"><br>List Unapproved Applicants</span></a></div>
 					  </div>
 					<div class="col-sm">
 						<div class="container" align="center"><a href="employee_list.php">
-						<div class="card">
-						<img src="images/employee.png" style="width:200px; border: none;">List Employees</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/employee.png" style="width:200px; border: none;"><br>List Employees</span></a></div>
 					  </div>
-					</div>
 					
 					<div class="col-sm">
 						<div class="container" align="center"><a href="pending_applicants.html">
-						<div class="card">
-						<img src="images/employee.png" style="width:200px; border: none;">Pending Applicants</div></a></div>
+						<span class="btn btn-light">
+						<img src="images/employee.png" style="width:200px; border: none;"><br>Pending Applicants</span></a></div>
 					  </div>
 					</div>
+					
+					
+					
 					<form method = 'post'><br><br>
 						<div class="form-group mx-auto" style = "width:100px">
 							<input type="submit" name = "logOut" class="btn btn-danger btn" value = "Log Out">
@@ -165,7 +168,34 @@ if(isset($_POST['logOut'])){
 	</div>
 </div>
 
-<hr>
-<img alt="logo" src="images/logo.png" style="height:80px;" class="center">
+<footer class="footer" id="myFooter" >
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="register.html">Apply </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li><a href="contactus.html">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+           <div class="container">
+                <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+            </div>
+    </footer>
+
 </body>
 </html>
