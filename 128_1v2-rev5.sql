@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 15, 2019 at 03:07 PM
+-- Generation Time: May 16, 2019 at 07:19 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -66,14 +66,6 @@ CREATE TABLE `applicants` (
   `do_not_show` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
---
--- Dumping data for table `applicants`
---
-
-INSERT INTO `applicants` (`id`, `first_name`, `last_name`, `middle_initial`, `sex`, `current_address`, `place_of_birth`, `birthdate`, `phone_number`, `email`, `linkedin_profile`, `educational_attainment`, `civil_status`, `nationality`, `SSN`, `target_position`, `birth_certificate_id`, `user_password`, `skills_csv`, `job_history_csv`, `approved`, `do_not_show`) VALUES
-(1, 'Shiro', 'Nai', 'K', 'F', 'Block 5 Lot 11 B.F. Homes, Paranaque City, Metro Manila.', 'Quezon City', '2007-11-00', '090543216969', 'nai@gmail.com', 'linkedin.com/nainanikusorayo', 'College', 'M', 'Filipino', '7646359856', 4, '83294832474', '12345', NULL, NULL, 2, 0),
-(2, '砂糖', '中野', '無い', NULL, '２３F田中建物中央区東京', '長野', '2000-01-01', '54759843', 'ilovemaids@yahoo.com', 'linkedin.com/kimochiii', 'College', 'M', 'Chinese', '43232532', 1, '4532543533', '12345', NULL, NULL, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -107,8 +99,9 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `middle_initial`, `sex`, `current_address`, `place_of_birth`, `birthdate`, `phone_number`, `email`, `linkedin_profile`, `educational_attainment`, `civil_status`, `nationality`, `SSN`, `job_position`, `birth_certificate_id`, `employment_date`, `health_package`) VALUES
-(1, 'John', 'Solis', 'M', 'M', '16 Mariano street, KL Village, Quezon City, Manila', 'Quezon City', '2000-01-02', '53634454', 'msolis@company.com', NULL, 'Vocational', 'M', 'Filipino', '435354', 'Janitor 1', '564565645', '2019-05-08 11:05:53', 1),
-(2, 'Reno', 'Villar', 'R', 'M', 'B4 L23 AK housing village, Quezon City', 'Manila', '1997-05-01', '43453242', 'avil@company.com', 'linkedin.com/bestjanitor', 'Highschool', 'S', 'Filipino', '43252432', 'Janitor', '5436563', '2019-05-08 11:09:52', 2);
+(1, 'John', 'Solis', 'M', 'M', '16 Mariano street, KL Village, Quezon City, Manila', 'Quezon City', '2000-01-02', '53634454', 'msolis@company.com', '', 'Vocational', 'S', 'Filipino', '435354998', 'Janitor 1', '564565645', '2019-05-08 11:05:53', 1),
+(2, 'Reno', 'Villar', 'R', 'M', 'B4 L23 AK housing village, Quezon City', 'Manila', '1997-05-01', '43453242', 'avil@company.com', 'linkedin.com/bestjanitor', 'Highschool', 'S', 'Filipino', '43252432', 'Janitor', '5436563', '2019-05-08 11:09:52', 2),
+(19, 'Shiro', 'Nai', 'K', 'F', 'Block 5 Lot 11 B.F. Homes, Paranaque City, Metro Manila.', 'Quezon City', '2017-11-22', '090543216969', 'nai_kimochi@gmail.com', 'linkedin.com/nainanikusorayo', 'College', 'S', 'Filipino', '7646359856', 'Maid', '83294832474', '2019-05-16 05:29:19', 1);
 
 -- --------------------------------------------------------
 
@@ -122,14 +115,6 @@ CREATE TABLE `employee_deps` (
   `dep_name` varchar(500) COLLATE utf8mb4_bin DEFAULT NULL,
   `dep_relation` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
---
--- Dumping data for table `employee_deps`
---
-
-INSERT INTO `employee_deps` (`id`, `employee_id`, `dep_name`, `dep_relation`) VALUES
-(1, 1, 'Maria Solis', 'mother'),
-(2, 1, 'Mariano Solis', 'brother');
 
 -- --------------------------------------------------------
 
@@ -146,13 +131,6 @@ CREATE TABLE `employee_job_history` (
   `year_ended` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
---
--- Dumping data for table `employee_job_history`
---
-
-INSERT INTO `employee_job_history` (`id`, `employee_id`, `job_name`, `job_desc`, `year_started`, `year_ended`) VALUES
-(1, 1, 'Janitor', 'Basic Janitor at company XYZ', 1990, 1997);
-
 -- --------------------------------------------------------
 
 --
@@ -164,13 +142,6 @@ CREATE TABLE `employee_skills` (
   `employee_id` int(10) UNSIGNED NOT NULL,
   `skill` varchar(100) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
---
--- Dumping data for table `employee_skills`
---
-
-INSERT INTO `employee_skills` (`id`, `employee_id`, `skill`) VALUES
-(1, 1, 'Carpentry');
 
 -- --------------------------------------------------------
 
@@ -213,8 +184,7 @@ CREATE TABLE `job_positions` (
 INSERT INTO `job_positions` (`id`, `job_title`, `job_description`, `is_open`) VALUES
 (1, 'Janitor 1', 'Basic entry level janitor. Basic salary and starting pay. with health benefits.', 1),
 (2, 'Secretary 1', 'Entry level secretary. Basic benefits.', 1),
-(3, 'Receptionist 2', 'Receptionist with at least 1 year experience in the bob or any related job. Basic benefits.', 1),
-(4, 'Maid', 'この仕事は日本のマイドの意味です。マイド喫茶店のようにをします。「お帰りなさいませご主人様！」と言うできますから。', 1);
+(3, 'Receptionist 2', 'Receptionist with at least 1 year experience in the bob or any related job. Basic benefits.', 1);
 
 --
 -- Indexes for dumped tables
@@ -287,31 +257,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `applicants`
 --
 ALTER TABLE `applicants`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `employee_deps`
 --
 ALTER TABLE `employee_deps`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `employee_job_history`
 --
 ALTER TABLE `employee_job_history`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `employee_skills`
 --
 ALTER TABLE `employee_skills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `health_packages`
@@ -339,25 +309,19 @@ ALTER TABLE `applicants`
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
-  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`health_package`) REFERENCES `health_packages` (`id`);
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`health_package`) REFERENCES `health_packages` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `employee_deps`
 --
 ALTER TABLE `employee_deps`
-  ADD CONSTRAINT `employee_deps_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`);
-
---
--- Constraints for table `employee_job_history`
---
-ALTER TABLE `employee_job_history`
-  ADD CONSTRAINT `employee_job_history_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`);
+  ADD CONSTRAINT `employee_deps_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `employee_skills`
 --
 ALTER TABLE `employee_skills`
-  ADD CONSTRAINT `employee_skills_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`);
+  ADD CONSTRAINT `employee_skills_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
