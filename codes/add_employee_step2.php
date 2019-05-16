@@ -190,7 +190,7 @@
 
 			<!-- Table bullshit starts here -->
 			<h2>Dependents Editor</h2>
-				<table id="DependentsTable">
+				<table id="DependentsTable"  class = "table">
 				<tr>
 					<td><b>Dependent Name</b></td>
 					<td><b>Relationship</b></td>
@@ -206,7 +206,7 @@
 
 
 			<h2>Skills Editor</h2>
-				<table id="SkillsTable">
+				<table id="SkillsTable"  class = "table">
 				<tr>
 					<td><b>Skill Name</b></td>
 					<td><b>Action</b></td>
@@ -234,7 +234,7 @@
 
 
 			<h2>Job History Editor</h2>
-				<table id="JobHistoryTable">
+				<table id="JobHistoryTable" class = "table">
 				<tr>
 					<td><b>Job Title</b></td>
 					<td><b>Job Description</b></td>
