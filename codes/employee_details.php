@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+header("Access-Control-Allow-Origin: *");
 $id = $_GET['id'];
 
 if(isset($_SESSION['adminUser'])){
@@ -74,13 +74,202 @@ $birth_certificate_id = "";
 <script src="js/util.js"></script>
   <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/font-awesome.min.css"
 
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link rel="stylesheet" href="progress-indicator/progress-indicator.scss">
 </head>
+
+<script>
+	function add_job (object) {
+		if (window.XMLHttpRequest) {
+	      xmlhttp=new XMLHttpRequest();
+	  }
+	 else {
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById('doesntexist').innerHTML = this.responseText;
+	      }
+	    };
+		var employee_id = $(object).parent().parent().attr('id');
+		var name = $(object).parent().parent().find('#job_name').val();
+		var description = $(object).parent().parent().find('#job_description').val();
+	  xmlhttp.open("GET", "employee_details_controller.php?" + "function=1" + "&name=" + name + "&description=" + description + "&empid=" +employee_id, true);
+	  xmlhttp.send();
+		location.reload();
+	}
+
+	function switch_boxes_edit (object) {
+		var name = $(object).parent().parent().find('#edit_name');
+		var description = $(object).parent().parent().find('#edit_desc');
+		var old_name = $(name).html();
+		var old_desc = $(description).html();
+		$(name).html("");
+		$(description).html("");
+		var input_name = $("<input>").attr('id','input_name').val(old_name).appendTo(name);
+		var input_name = $("<textarea>").attr('id','input_desc').val(old_desc).appendTo(description);
+	}
+
+	function switch_boxes_skill (object) {
+		var skill = $(object).parent().parent().find('#edit_skill');
+		var old_skill = $(skill).html();
+		$(skill).html("");
+		var input_skill = $("<input>").attr('id','input_skill').val(old_skill).appendTo(skill);
+	}
+
+	function return_boxes_edit (object) {
+		var name = $(object).parent().parent().find('#edit_name');
+		var description = $(object).parent().parent().find('#edit_desc');
+		$(name).html($(name).children('#input_name').val());
+		$(description).html($(description).children('#input_desc').val());
+	}
+
+	function return_boxes_skill (object) {
+		var skill = $(object).parent().parent().find('#edit_skill');
+		$(skill).html($(skill).children('#input_skill').val());
+	}
+
+	function edit_job (object) {
+		if (window.XMLHttpRequest) {
+	      xmlhttp=new XMLHttpRequest();
+	  }
+	 else {
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById('doesntexist').innerHTML = this.responseText;
+	      }
+	    };
+		var id = $(object).parent().parent().attr('id');
+		var emp_id = $(object).parent().parent().attr('name');
+		var name = $(object).parent().parent().find('#input_name').val();
+		var description = $(object).parent().parent().find('#input_desc').val();
+	  xmlhttp.open("GET", "employee_details_controller.php?" + "function=2" + "&emp_id=" + emp_id + "&name=" + name + "&description=" + description + "&id=" +id, true);
+	  xmlhttp.send();
+		location.reload();
+	}
+
+	function edit_skill (object) {
+		if (window.XMLHttpRequest) {
+	      xmlhttp=new XMLHttpRequest();
+	  }
+	 else {
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById('doesntexist').innerHTML = this.responseText;
+	      }
+	    };
+		var id = $(object).parent().parent().attr('id');
+		var skill = $(object).parent().parent().find('#input_skill').val();
+	  xmlhttp.open("GET", "employee_details_controller.php?" + "function=5" + "&id=" + id + "&skill=" + skill, true);
+	  xmlhttp.send();
+		location.reload();
+	}
+
+	function delete_job (object) {
+		if (window.XMLHttpRequest) {
+	      xmlhttp=new XMLHttpRequest();
+	  }
+	 else {
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById('doesntexist').innerHTML = this.responseText;
+	      }
+	    };
+		var id = $(object).parent().parent().attr('id');
+	  xmlhttp.open("GET", "employee_details_controller.php?" + "function=3&" + "id=" + id, true);
+	  xmlhttp.send();
+		location.reload();
+	}
+
+	function delete_skill (object) {
+		if (window.XMLHttpRequest) {
+	      xmlhttp=new XMLHttpRequest();
+	  }
+	 else {
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById('doesntexist').innerHTML = this.responseText;
+	      }
+	    };
+		var id = $(object).parent().parent().attr('id');
+	  xmlhttp.open("GET", "employee_details_controller.php?" + "function=6&" + "id=" + id, true);
+	  xmlhttp.send();
+		location.reload();
+	}
+
+	function add_skill (object) {
+		if (window.XMLHttpRequest) {
+	      xmlhttp=new XMLHttpRequest();
+	  }
+	 else {
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById('doesntexist').innerHTML = this.responseText;
+	      }
+	    };
+		var emp_id = $(object).parent().parent().attr('id');
+		var skill = $(object).parent().parent().find('#skill_name').val();
+		xmlhttp.open("GET", "employee_details_controller.php?" + "function=4&" + "emp_id=" + emp_id + "&skill=" + skill, true);
+	  xmlhttp.send();
+		location.reload();
+	}
+
+
+	$(document).ready(function () {
+		$(document).on('focus','.clear_on_enter',function () {
+			$(this).val('');
+		});
+		$(document).on('click','.add_job', function () {
+			add_job($(this));
+		});
+		$(document).on('click','.edit_job', function () {
+			if ($(this).html() == "EDIT") {
+				$(this).html("DONE");
+				switch_boxes_edit($(this));
+			}
+			else {
+				$(this).html("EDIT");
+				edit_job($(this));
+				return_boxes_edit($(this));
+			}
+		});
+		$(document).on('click','.edit_skill', function () {
+			if ($(this).html() == "EDIT") {
+				$(this).html("DONE");
+				switch_boxes_skill($(this));
+			}
+			else {
+				$(this).html("EDIT");
+				edit_skill($(this));
+				return_boxes_skill($(this));
+			}
+		});
+		$(document).on('click','.delete_job', function () {
+			delete_job($(this));
+			$(this).parent().parent().remove();
+		});
+		$(document).on('click','.add_skill', function () {
+			add_skill($(this));
+		});
+		$(document).on('click','.delete_skill', function () {
+			delete_skill($(this));
+			$(this).parent().parent().remove();
+		});
+	});
+</script>
 
 <body>
   <div class="shadow">
@@ -104,7 +293,7 @@ $birth_certificate_id = "";
 
 
 
- <div class="panel-body" style = "margin-right: 21%;font-size: 17px">
+ <div class="panel-body" style = "font-size: 17px">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">  </div>
 
@@ -124,8 +313,7 @@ $birth_certificate_id = "";
                   <table class="table table-user-information">
                     <tbody>
 					<tr>
-                        <td colspan = 2><h1>BASIC INFORMATION</h1></td>
-
+                        <td><h1>BASIC INFORMATION</h1></td>
                       </tr>
                       <tr>
                       <tr>
@@ -209,9 +397,9 @@ $birth_certificate_id = "";
 
                     </tbody>
                   </table>
-                   <a href="edit_basic_employee.php?id=<?php echo $id ?>" class="btn btn-danger container mx-auto" style="margin-left:20%;"> EDIT</a>
 
 
+                  <a href="edit_basic_employee.php?id=<?php echo $id ?>" class="btn btn-danger container mx-auto" style="width:340px"> EDIT</a>
                 </div>
               </div>
             </div>
@@ -221,7 +409,7 @@ $birth_certificate_id = "";
 
 			<br><br><br><br>
 
-			<div class="panel-body" style = "margin-right: 21%;font-size: 17px">
+			<div class="panel-body" style = "font-size: 17px">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">  </div>
 
@@ -231,7 +419,7 @@ $birth_certificate_id = "";
                     <tbody>
 
 					<tr>
-                        <td colspan = 3><h1>JOB HISTORY</h1></td>
+                        <td><h1>JOB HISTORY</h1></td>
                       </tr>
 					<tr>
                         <th>Job Name:</th>
@@ -242,6 +430,7 @@ $birth_certificate_id = "";
 
                       <?php
 
+					$employee_id = $_GET['id'];
 					$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
 					$stmt = $db->prepare("SELECT * FROM employee_job_history WHERE `employee_id` = '$id'");
 					$stmt->execute();
@@ -254,17 +443,28 @@ $birth_certificate_id = "";
 						foreach ($values as $key => $value) {
 							if($key=="job_name")$job_name = $value;
 							if($key=="job_desc")$job_desc = $value;
+							if($key=="id")$id = $value;
 						}?>
 
-                      <tr>
-                        <td><?php echo $job_name ?></td>
-                        <td><?php echo $job_desc ?></td>
+                      <tr id=<?php echo "'".$id."'"?> name=<?php echo "'".$employee_id."'"?>>
+                        <td id='edit_name'><?php echo $job_name ?></td>
+                        <td id='edit_desc'><?php echo $job_desc ?></td>
 
 
 						<!--EDIT THIS ARVIN-->
-						<td><button type = 'button' class = "btn btn-danger"> EDIT </button><button type = 'button' class = "btn btn-danger"> DELETE </button></td>
+						<td><button type = 'button' class = "btn btn-danger edit_job">EDIT</button><button type = 'button' class = "btn btn-danger delete_job">DELETE</button></td>
                       </tr>
 					<?php } ?>
+					<?php
+					//$employee_id = $id;
+						echo "<tr id='".$_GET['id']."'>";
+							echo "<td><input class='clear_on_enter' id='job_name' type='text' value='Job Name'></td>";
+							echo "<td><textarea class='clear_on_enter' id='job_description' row='2' style='width: 100%'>Job Description</textarea></td>";
+							echo "<td><button class='btn btn-danger add_job'>ADD</button>";
+						echo "</tr>";
+
+
+					?>
 
                     </tbody>
                   </table>
@@ -275,7 +475,7 @@ $birth_certificate_id = "";
             </div>
 			<br><br><br><br>
 
-			<div class="panel-body" style = "margin-right: 21%;font-size: 17px">
+			<div class="panel-body" style = "font-size: 17px">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">  </div>
 
@@ -291,22 +491,29 @@ $birth_certificate_id = "";
 
                       <?php
 
+					$employee_id = $_GET['id'];
 					$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
-					$stmt = $db->prepare("SELECT * FROM employee_skills WHERE `employee_id` = '$id'");
+					$stmt = $db->prepare("SELECT * FROM employee_skills WHERE `employee_id` = '$employee_id '");
 					$stmt->execute();
 					$results_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 					$skill = "";
 					foreach ($results_arr as $i => $values) {
 						foreach ($values as $key => $value) {
 							if($key=="skill")$skill = $value;
+							if($key=="id")$id = $value;
 						}?>
 
-                      <tr>
-                        <td><?php echo $skill ?></td>
-						<td><button type = 'button' class = "btn btn-danger"> EDIT </button><button type = 'button' class = "btn btn-danger"> DELETE </button></td>
+                      <tr id=<?php echo "'".$id."'" ?>>
+                        <td id='edit_skill'><?php echo $skill ?></td>
+						<td><button type = 'button' class = "btn btn-danger edit_skill">EDIT</button><button type = 'button' class = "btn btn-danger delete_skill">DELETE</button></td>
                       </tr>
 					<?php } ?>
-
+										<?php
+											echo "<tr id='".$employee_id."'>";
+											echo "<td><input class='clear_on_enter' id='skill_name' type='text' value='Skill Name'></td>";
+											echo "<td><button class='btn btn-danger add_skill'>ADD</button>";
+											echo "</tr>";
+										?>
                     </tbody>
                   </table>
 
@@ -317,33 +524,10 @@ $birth_certificate_id = "";
 
           </div>
 </div>
-<footer class="footer" id="myFooter" >
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h5>Links</h5>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="register.html">Apply </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4">
-                    <h5>Contact Us</h5>
-                    <ul>
-                        <li><a href="contactus.html">Email</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-           <div class="container">
-                <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
-            </div>
-    </footer>
+
+<hr>
+<img alt="logo" src="images/logo.png" style="height:80px;" class="center">
+<div id='doesntexist'>
+</div>
 </body>
 </html>
