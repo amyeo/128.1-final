@@ -4,11 +4,11 @@ $id = $_GET['id'];
 
 if(isset($_POST['delete'])){
 	$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
-	$stmt = $db->prepare("DELETE FROM employee WHERE `id` = '$id'"); 
+	$stmt = $db->prepare("DELETE FROM employee WHERE `id` = '$id'");
 	$stmt->execute();
 	$stmt->DebugDumpParams();
-	
-	
+
+
 	?>
 	<script> alert("Employee Sucessfully deleted"); </script>
 	<?php
@@ -30,20 +30,20 @@ if(isset($_POST['delete'])){
     <meta name="description" content="">
     <title>Delete</title>
 	<link rel="icon" href="images/cropped-UPseal-newcolors-192x192.png" sizes="192x192">
-	
+
 	<script src="js/jquery-3.3.1.min_2.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/util.js"></script>
 	<script src="ourScript.js"></script>
 
-	
+
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-	
-	
+	<link rel="stylesheet" href="css/footer.css">
+
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-	
+
 	<link rel="stylesheet" href="progress-indicator/progress-indicator.scss">
 
     <!-- Bootstrap core CSS -->
@@ -65,7 +65,7 @@ if(isset($_POST['delete'])){
         }
       }
     </style>
-	
+
     <!-- Custom styles for this template -->
 	<link rel="stylesheet" href="signUpStyles.css">
   </head>
@@ -88,25 +88,21 @@ if(isset($_POST['delete'])){
 			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
 		  </div>
 	</nav>
-	
-	
 
 
-	<script>
-		function addEmployee
-	
-	</script>
-	
+
+
+
 	<div class="card bg1-light">
 		<article class="card-body mx-auto" style="max-width: 800px;">
-		
+
 		<div class = "row">
 			<h2> Delete Employee: </h2>
 		</div>
-		
-		<?php 
+
+		<?php
 			$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
-			$stmt = $db->prepare("SELECT * FROM employee WHERE `id` = '$id'"); 
+			$stmt = $db->prepare("SELECT * FROM employee WHERE `id` = '$id'");
 			$stmt->execute();
 			$results_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$last_name = "";
@@ -119,7 +115,7 @@ if(isset($_POST['delete'])){
 					if($key=="first_name")$first_name = $value;
 					if($key=="job_position")$job_position = $value;
 					if($key=="employment_date")$employment_date = $value;
-					
+
 				}
 			}
 		?>
@@ -138,10 +134,10 @@ if(isset($_POST['delete'])){
 					</tr>
 				<tbody>
 		</div><br>
-		
+
 		<form method = "post">
 			<input type = "hidden" name = "ID" value = "0"/>
-			
+
 				<div class = "row">
 					<div class = "col">
 						<button type="button" onclick="javascript:history.back()" class="btn btn-primary btn-block">Cancel</button>
@@ -151,12 +147,40 @@ if(isset($_POST['delete'])){
 					</div>
 				</div>
 		</form>
-		
-		
+
+
 
 		</article>
 	</div>
 
-
+	<footer class="footer" id="myFooter" >
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-4">
+	                    <h5>Links</h5>
+	                    <ul>
+	                        <li><a href="index.html">Home</a></li>
+	                        <li><a href="register.html">Apply </a></li>
+	                    </ul>
+	                </div>
+	                <div class="col-sm-4">
+	                    <h5>About us</h5>
+	                    <ul>
+	                        <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+	                    </ul>
+	                </div>
+	                <div class="col-sm-4">
+	                    <h5>Contact Us</h5>
+	                    <ul>
+	                        <li><a href="contactus.html">Email</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	           <div class="container">
+	                <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+	            </div>
+	    </footer>
 
   </body>
+	</html>

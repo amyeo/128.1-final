@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -51,7 +51,7 @@
 				counter++;
 				e.preventDefault();
 				$("#history_form").append('<div class = "row"><div class = "col-11"><div class="form-group input-group"><div class="input-group-prepend"><span class="input-group-text">Job Name</span></div><input name='+dependencyName+' class="form-control" placeholder="" type="text"></div></div><div class = "col"><button id="add_history">Add</button></div></div><div class = "row"><div class="form-group input-group col"><textarea style = "width: 877px" rows = 4 id = '+relationName+'  name='+relationName+' placeholder="briefly describe.." form = "step2"></textarea></div></div>');
-				
+
 			});
 			var counter1 = 2;
 			$("#add_history").click(function(e) {
@@ -151,7 +151,7 @@
 			<input name="civil_status" type="hidden" value="<?php echo $_POST["civil_status"]; ?>">
 			<input name="nationality" type="hidden" value="<?php echo $_POST["nationality"]; ?>">
 			<input name="SSN" type="hidden" value="<?php echo $_POST["SSN"]; ?>">
-			
+
 
 			<input name="employee_skill_1" type="hidden" value="<?php if(isset($_POST["employee_skill_1"])){echo $_POST["employee_skill_1"];} ?>">
 			<input name="employee_skill_2" type="hidden" value="<?php if(isset($_POST["employee_skill_2"])){echo $_POST["employee_skill_2"];} ?>">
@@ -209,7 +209,35 @@
 			</form>
 		</article>
 	</div>
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
 
 
   </body>
+</html>

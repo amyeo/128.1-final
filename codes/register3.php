@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/footer.css">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -120,7 +120,7 @@
 			<input name="employee_skill_3" type="hidden" value="<?php if(isset($_POST["employee_skill_3"])){echo $_POST["employee_skill_3"];} ?>">
 			<input name="employee_skill_4" type="hidden" value="<?php if(isset($_POST["employee_skill_4"])){echo $_POST["employee_skill_4"];} ?>">
 			<input name="employee_skill_5" type="hidden" value="<?php if(isset($_POST["employee_skill_5"])){echo $_POST["employee_skill_5"];} ?>">
-		
+
 			<input name="job_position_targ" type="hidden" value="<?php echo $_POST["job_position_targ"]; ?>">
 			<input name="birth_cert_id" type="hidden" value="<?php echo $_POST["birth_cert_id"]; ?>">
 
@@ -152,11 +152,11 @@
 				<!--Dependencies-->
 				<h4 align = "center" style = "width: 1000px">Thank you for submitting the application form. Your details will be validated soon. You check your application status through the link below.</h2>
 				<br>
-				
+
 				<br>
 				<h4 align = "center" style = "width: 1000px">Please provide a password to gain access to your application results:</h4>
 				<br>
-				
+
 				<div class = "row mx-auto" style = "width: 600px">
 						<div class="form-group input-group">
 							<input name="results_password1" class="form-control" placeholder="Enter Password" type="password">
@@ -167,14 +167,14 @@
 							<input name="results_password2" class="form-control" placeholder="Confirm your Password" type="password">
 						</div>
 				</div>
-				
+
 				<br>
-				
+
 				<div class = "row mx-auto" style = "width: 600px">
 					<input type="checkbox" id="checkbox" value="marked"> I hereby pledge I have submitted nothing but the truth.
 					<br>
 				</div>
-				
+
 				<br>
 
 				<div class = "row">
@@ -187,8 +187,36 @@
 		</article>
 	</div>
 
-
+  <footer class="footer" id="myFooter" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h5>Links</h5>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="register.html">Apply </a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4">
+                      <h5>Contact Us</h5>
+                      <ul>
+                          <li><a href="contactus.html">Email</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+             <div class="container">
+                  <h5 class="logo"><a href="index.html"> <img src="images/logo.png" width="50">  University of the Philippines Manila </a></h5>
+              </div>
+      </footer>
 
 
 
   </body>
+</html>
