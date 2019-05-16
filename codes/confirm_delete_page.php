@@ -6,6 +6,7 @@ if(isset($_POST['delete'])){
 	$db = new PDO('mysql:host=localhost;dbname=128.1v2','root','');
 	$stmt = $db->prepare("DELETE FROM employee WHERE `id` = '$id'"); 
 	$stmt->execute();
+	$stmt->DebugDumpParams();
 	
 	
 	?>

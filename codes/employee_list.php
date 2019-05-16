@@ -133,7 +133,7 @@ if(mysqli_connect_errno()){
 							<th ><?php print $row["id"]; ?></th>
 							<td ><?php print $row["last_name"];?>, <?php print $row["first_name"]; ?></td>
 							<td ><?php print $row["email"]; ?></td>
-							<td><a href = 'edit_employee.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'suubmit'>Edit</button></a><a href = 'confirm_delete_page.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'submit'>Delete</button></a></td>
+							<td><a href = 'employee_details.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'suubmit'>Details</button></a><a href = 'confirm_delete_page.php?id=<?php print $row["id"]?>'<button class="btn btn-danger btn" type = 'submit'>Delete</button></a></td>
 							</tr>
 						<?php $count++; 
 					} ?>
