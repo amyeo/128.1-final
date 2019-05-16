@@ -1,3 +1,16 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+//uncomment below to show errors
+//error_reporting(-1);
+//ini_set('display_errors', 'On');
+$link = mysqli_connect("localhost","root","","128.1v2");
+mysqli_set_charset($link, "utf8");
+//error if not success
+if(mysqli_connect_errno()){
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit(); //quit if failed
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -274,12 +287,17 @@
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text">Target Position</span>
+								<select name="job_position_targ">
+            <?php
+            $count=0;
+            $sel_query="Select * from job_positions ORDER BY id asc;";
+            $result = mysqli_query($link,$sel_query);
+            while($row = mysqli_fetch_assoc($result)) { ?>
+            <option id="<?php print $row["id"]; ?>" value="<?php print $row["id"]; ?>"><?php print $row["job_title"]; ?></option>
+            <?php $count++; } ?>    
+            </select><font color="red">*</font>
 							</div>
-							<select name = "job_position_targ" class="custom-select" style="max-width: 400px;">
-								<option id = "1" value = "1">Janitor</option>
-								<option id = "2" value = "2">Waitress</option>
-								<option id = "3" value = "3">Maid</option>
-							</select><font color="red">*</font>
+							
 						</div> <!-- form-group// -->
 					</div>
 					<div class = "col-8">
