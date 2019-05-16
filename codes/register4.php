@@ -73,6 +73,7 @@ $nationality = mysqli_real_escape_string($link,$_POST['nationality']);
 $SSN = mysqli_real_escape_string($link,$_POST['SSN']);
 $target_position = mysqli_real_escape_string($link,$_POST['job_position_targ']);
 $birth_cert_id = mysqli_real_escape_string($link,$_POST['birth_cert_id']);
+$incrementedID = "";
 
 //get employee CSV now
 $job_history_csv = "";
@@ -87,6 +88,7 @@ while(isset($_POST[$job_name_name . $job_name_num])){
 	$job_history_csv = $job_history_csv . $_POST[$job_name_name . $job_name_num] . ", " . $job_desc . ";";
 	$job_name_num = $job_name_num + 1;
 }
+
 
 //get employee skill csv
 $employee_skills_csv = "";
@@ -106,15 +108,28 @@ $query = $db->prepare ("INSERT INTO applicants (first_name, last_name
 place_of_birth, birthdate, phone_number,
 email,linkedin_profile, educational_attainment,
 civil_status, nationality, SSN,
-job_history_csv, skills_csv, target_position, user_password, birth_cert_id) VALUES ('" . $first_name . "', '" . 
+job_history_csv, skills_csv, target_position, user_password, birth_certificate_id) VALUES ('" . $first_name . "', '" . 
 $last_name . "', '" . $middle_initial . "', '" . $sex . "', '" .
 $full_address . "', '" . $place_of_birth . "', '" . $birthday . "', '" . 
 $phone_number . "', '" . $email . "', '" . $linkedin_profile . "', '" . 
 $educational_attainment . "', '" . $civil_status . "', '" . $nationality . "', '" . 
 $SSN . "', '" . $job_history_csv . "', '" . $employee_skills_csv . "', '" . $target_position . "', '" . $_POST["results_password1"] . "', '" . $birth_cert_id  . "')");
 
-$query->debugDumpParams();
+//$query->debugDumpParams();
 $query -> execute();
+
+
+$query = $db->prepare ("SELECT `id` FROM `applicants` WHERE `id` = LAST_INSERT_ID()");
+$query -> execute();
+$results_arr = $query->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($results_arr as $i => $values) {
+	foreach ($values as $key => $value) {
+		if($key=="id")$incrementedID = $value;
+	}
+}
+
+
 
 //$error= $query->errorInfo();
 //echo $error[2];
@@ -202,7 +217,7 @@ $query -> execute();
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Application Form (Finished)<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "index.html">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 
@@ -224,7 +239,7 @@ $query -> execute();
 				<h4 align = "center" style = "width: 1000px">Thank you for submitting the application form. Your details will be validated soon. You check your application status through the link below.</h2>
 				<br>
 				
-				<h4 align = "center" style = "width: 1000px">ID: 0069</h2>
+				<h4 align = "center" style = "width: 1000px">ID: <?php echo $incrementedID ?></h2>
 				<br>
 				
 				<h4 align = "center" style = "width: 1000px">Password: <?php echo $_POST["results_password1"]; ?></h2>
