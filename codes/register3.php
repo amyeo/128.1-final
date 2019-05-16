@@ -53,7 +53,7 @@
 					$("[name=results_password2]").val()="";
 				}
 				else if(document.getElementById("checkbox").checked == false){
-					alert("Please pledge to the great one");
+					alert("Please confirm you have submitted nothing but the truth.");
 				}
 				else $("#results_form").submit();
 			});
