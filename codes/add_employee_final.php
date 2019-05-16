@@ -150,6 +150,7 @@ foreach($row_arr as $row){
 $querystr = "UPDATE applicants SET approved=3 WHERE id=" . $applicant_id . "";
 //echo $querystr . "\n";
 mysqli_query($link, $querystr);
+
 ?>
 
 <!doctype html>
@@ -231,7 +232,7 @@ mysqli_query($link, $querystr);
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Add Employee Form (Finished)<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "admin.php">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 
@@ -253,6 +254,9 @@ mysqli_query($link, $querystr);
 				<h4 align = "center" style = "width: 1000px">Employee added</h2>
 				<br>
 				
+				<div>
+				<a class = "btn btn-danger container" href = "admin.php">Home</a>
+				</div>
 			</form>
 		</article>
 	</div>

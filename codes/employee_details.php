@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$id = 1; //$_GET['id'];
+$id = $_GET['id'];
 
 if(isset($_SESSION['adminUser'])){
 	$adminUser = $_SESSION['adminUser'];
