@@ -125,7 +125,7 @@ if(isset($_POST['submitForm'])){
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Edit Health Package<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "admin.php">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 

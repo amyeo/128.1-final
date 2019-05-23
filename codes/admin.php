@@ -90,7 +90,7 @@ if(isset($_POST['logOut'])){
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Home<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "admin.php">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 
@@ -179,11 +179,20 @@ if(isset($_POST['logOut'])){
                     </ul>
                 </div>
                 <div class="col-sm-4">
-                    <h5>About us</h5>
+				<?php if(isset($_SESSION['adminUser'])){ ?>
+                    <h5>Advanced Actions</h5>
                     <ul>
-                        <li><a href="aboutus.html">CMSC 128.1 GROUP</a></li>
+                        <li><a href="health_packages.php">List Health Benefits</a></li>
+						<li><a href="add_health_package.php">Add Health Package</a></li>
                     </ul>
+				<?php }else{ ?>
+					<h5>About Us</h5>
+                    <ul>
+                        <li><a href="aboutus.html">CMSC 128.1</a></li>
+                    </ul>
+				<?php } ?>
                 </div>
+				
                 <div class="col-sm-4">
                     <h5>Contact Us</h5>
                     <ul>

@@ -95,7 +95,7 @@ if(mysqli_connect_errno()){
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">List of Health Packages <span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "admin.php">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 
@@ -147,7 +147,7 @@ if(mysqli_connect_errno()){
 				</table>
 				<br><br>
 
-				<div class="form-group mx-auto" style = "max-width: 500px"><input id="finish" type="button" class="btn btn-danger btn-block" value= "Back" ></div>
+				<div class="form-group mx-auto" style = "max-width: 500px"><a href = "admin.php" type="button" class="btn btn-danger btn-block">Back</a></div>
 			</form>
 		</article>
 	</div>
