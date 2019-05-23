@@ -37,7 +37,7 @@
 				<a class="nav-link logoInfo" href="index.html" style = "color:#fff;">Home<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "index.html">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 </div><br>
