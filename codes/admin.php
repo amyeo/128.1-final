@@ -90,7 +90,7 @@ if(isset($_POST['logOut'])){
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Home<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "admin.php">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 
