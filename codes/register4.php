@@ -257,7 +257,7 @@ foreach ($results_arr as $i => $values) {
                       <h5>Links</h5>
                       <ul>
                           <li><a href="index.html">Home</a></li>
-                          <li><a href="register.html">Apply </a></li>
+                          <li><a href="register.php">Apply </a></li>
                       </ul>
                   </div>
                   <div class="col-sm-4">
