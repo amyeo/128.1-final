@@ -100,7 +100,7 @@ if(mysqli_connect_errno()){
 				<a class="nav-link logoInfo" href="#" style = "color:#fff;">Application Form<span class="sr-only">(current)</span></a>
 			  </li>
 			</ul>
-			<a class = "UPlogo"style = "color:#fff;" href = "homeadmin.html">University of the Philippines Manila</a>
+			<a class = "UPlogo"style = "color:#fff;" href = "index.html">University of the Philippines Manila</a>
 		  </div>
 	</nav>
 
