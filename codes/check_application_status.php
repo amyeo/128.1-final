@@ -70,9 +70,9 @@
               $application_status_code = $row["approved"];
               if($application_status_code == 0){
                   $application_status = "Judgement Pending";
-              }elseif($application_status_code == 1){
-                  $application_status = "Application Denied";
               }elseif($application_status_code == 2){
+                  $application_status = "Application Denied";
+              }elseif($application_status_code == 1){
                   $application_status = "Application Approved";
               }elseif($application_status_code == 3){
                   $application_status = "N/A: You have already underwent the proccess.";
